@@ -1,0 +1,13 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<h1>New Lapse Analysis</h1>
+
+<form action="{% url 'lapse_run' %}" class="form-inline my-2 my-lg-0" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-yak">Run</button>
+</form>
+
+
+{% endblock %}

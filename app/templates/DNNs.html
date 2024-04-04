@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<h3>{{ model_str }}s</h3>
+<table class="table">
+    <thead style="background-color: #ffe5ea;">
+        <th>Name</th>
+        <th>Projection</th>
+        <th>Input Table</th>
+        <th>Output Table</th>
+        <th>Action</th>
+    </thead>
+
+    {% for item in items %}
+    <tr>
+        <td>
+            <b>{{ item }} </b>
+        </td>
+        <td><a class="btn btn-yak" href="{% url 'item' 'period' item.period.id %}">{{ item.period }}</a></td>
+        <td> {{ item.period.rate_file.df_top_html | safe }} </td>
+        <td> {{ item.assumption_file.df_top_html | safe }} </td>
+        <td><a class="btn btn-yak" href="{% url 'item' model_str item.id %}">View</a></td>
+    </tr>
+    {% endfor %}
+</table>
+<a class="btn btn-yak" href="{% url 'new' model_str %}">Create {{ model_str }}</a><br><br>
+
+{% endblock %}

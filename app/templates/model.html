@@ -1,0 +1,42 @@
+{% extends 'base.html'%}
+{% block content %}
+<h1>Create Lapse Model</h1>
+<h3>Lapse Investigations</h3>
+<table class="table">
+    <thead style="background-color: #ffe5ea;">
+        <th>Name</th>
+        <th>Data</th>
+        <th>Rate</th>
+        <th>Action</th>
+    </thead>
+    <tbody>
+    {% for item in lapse_analyses %}
+    <tr style="text-align: center">
+        <td><a href="{% url 'model_ind' item.id %}">{{ item.name }}</a></td>
+        <td>
+            <b>{{ item.data }}<br>Shape: {{ item.data.df.shape }}</b><br><br>
+            {{ item.data.df_top_html | safe }}
+            <a class="btn btn-yak" href="{% url 'data_ind' item.data.id %}">View All</a>
+        </td>
+        <td>
+            {% if item.rate %}
+                <b>{{ item.rate }}<br>Shape: {{ item.rate.df.shape }}</b><br><br>
+                {{ item.rate.df_top_html | safe }}
+                <a class="btn btn-yak" href="{% url 'data_ind' item.rate.id %}">View All</a>
+            {% endif %}
+        </td>
+        <td>
+            {% if item.model %}
+                <br><a class="btn btn-yak" href="{% url 'model_ind' item.id %}" style="margin-block: 10px;">View</a>
+            {% else %}
+                <a class="btn btn-yak" href="{% url 'model_run' item.id %}">Create Model</a>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<br><br><br>
+
+{% endblock %}

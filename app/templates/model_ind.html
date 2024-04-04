@@ -1,0 +1,31 @@
+{% extends 'base.html'%}
+{% block content %}
+<h1>Lapse Model: {{ lapse_analysis.name }}</h1>
+
+<table class="table">
+    <thead style="background-color: #ffe5ea; text-align: center;">
+        <th>Files</th>
+    </thead>
+    <tbody>
+    {% for file in lapse_analysis.files %}
+    <tr><td><b>{{ file.type }}</b><br>{{ file }}<br>{{ file.df_top_html | safe }}<br>
+            <a class="btn btn-yak" href="{% url 'data_ind' file.id %}">View</a>
+            {% if file.type == "Rate File" %}
+            <a class="btn btn-yak" href="{% url 'model_run' lapse_analysis.id %}" style="margin-block: 10px;">Create Assumptions</a>
+            {% endif %}
+            {% if file.type == "Assumption File" %}
+            <a class="btn btn-yak" href="{% url 'projection_run' lapse_analysis.id %}" style="margin-block: 10px;">Run Projection</a>
+            {% endif %}
+
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+
+{{ plot | safe }}
+
+<br><br><br>
+
+{% endblock %}

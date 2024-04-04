@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+{% block content %}
+<h1>Projection: {{ item.name | capfirst }} </h1>
+<a href="{% url 'list' model_str %}">All {{ model_str | capfirst }}s</a><br>
+<a class="btn btn-yak" href="{% url 'run' model_str item.id %}">Run {{ model_str | capfirst}}</a>
+<a class="btn btn-yak" href="{% url 'edit' model_str item.id %}">Edit {{ model_str | capfirst }}</a><br><br>
+
+<h3>Output</h3>
+{% if item.file %}
+    {{ item.file.df_extra_html | safe }}
+    {{ item.file.df_html | safe }}
+{% else %}
+    The projection has not been run.
+{% endif %}
+
+{% if item.dnn.assumption_file %}
+    <h3>Input</h3>
+    {{ item.dnn.assumption_file.df_html | safe }}
+{% endif %}
+
+{% endblock %}

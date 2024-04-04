@@ -1,0 +1,43 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<h3>Periods</h3>
+<table class="table">
+    <thead style="background-color: #ffe5ea;">
+        <th>Name</th>
+        <th>Period</th>
+        <th>Joins</th>
+        <th>Data</th>
+        <th>Action</th>
+    </thead>
+
+    {% for item in items %}
+    <tr>
+        <td>
+            <b>{{ item.name }} </b><br>
+            {% if item.df %}
+            {{ item.df.shape }}
+            {% endif %}
+        </td>
+        <td>{{ item.start_date }} to {{ item.end_date }}</td>
+        <td>
+            {% for data in item.joins %}
+                <a class="btn btn-yak" href="{% url 'item' 'data' data.id %}">{{ data }}</a> {{ data.file.df.shape }}<br>
+            {% endfor %}
+        </td>
+        <td>
+            <b>Rates</b>
+            {{ item.rate_file.df_top_html | safe }}
+            <b>Data</b>
+            {{ item.file.df_top_html | safe }}
+        </td>
+        <td>
+            <a class="btn btn-yak" href="{% url 'item' model_str item.id %}">View</a><br>
+            <a class="btn btn-yak" href="{% url 'delete' model_str item.id %}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a class="btn btn-yak" href="{% url 'new' model_str %}">Create {{ model_str }}</a><br><br>
+
+{% endblock %}

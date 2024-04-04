@@ -1,0 +1,31 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<h3>{{ model_str | capfirst }}s</h3>
+<table class="table">
+    <thead style="background-color: #ffe5ea;">
+        <th>Name</th>
+        <th>Start</th>
+        <th>End</th>
+        <th>Ausumptions</th>
+        <th>Action</th>
+    </thead>
+
+    {% for item in items %}
+    <tr>
+        <td>
+            <b>{{ item }} </b>
+        </td>
+        <td>{% if item.start %}<a class="btn btn-yak" href="{% url 'item' 'data' item.start.id %}">{{ item.start }}</a>{% endif %}</td>
+        <td>{% if item.end %}<a class="btn btn-yak" href="{% url 'item' 'data' item.end.id %}">{{ item.end }}</a>{% endif %}</td>
+        <td> {{ item.dnn.assumption_file.df_top_html | safe }} </td>
+        <td>
+            <a class="btn btn-yak" href="{% url 'item' model_str item.id %}">View</a>
+            <a class="btn btn-yak" href="{% url 'delete' model_str item.id %}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a class="btn btn-yak" href="{% url 'new' model_str %}">Create {{ model_str }}</a><br><br>
+
+{% endblock %}

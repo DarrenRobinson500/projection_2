@@ -1,0 +1,15 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<h3>Period File: {{ item.name }}</h3>
+<a href="{% url 'list' model_str %}">All {{ model_str | capfirst }}s</a><br>
+
+Shape: {{ item.file.df.shape }}
+<h3>Rates</h3>
+{{ item.rate_file.df_html | safe }}
+<h3>Raw Data</h3>
+{{ item.file.df_html | safe }}
+
+<br><br><br>
+
+{% endblock %}

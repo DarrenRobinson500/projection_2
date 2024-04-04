@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<h3>{{ model_str | capfirst }}: {{ item.name }}</h3>
+<a href="{% url 'list' model_str %}">All {{ model_str }}s</a><br>
+Model: {{ item.model }}. <br>Epochs: {{ item.epochs }}<br>
+<a class="btn btn-yak" href="{% url 'run' model_str item.id %}">Run {{ model_str | capfirst}}</a>
+<a class="btn btn-yak" href="{% url 'edit' model_str item.id %}">Edit {{ model_str | capfirst }}</a><br><br>
+
+<div class="row">
+    <div class="col-sm-6">
+        <h3>Rate Table</h3>
+        {{ item.plot_in | safe }}
+        {{ item.period.rate_file.df_html | safe }}
+    </div>
+    <div class="col-sm-6">
+        <h3>Assumption Table</h3>
+        {{ item.plot_out | safe }}
+        {{ item.assumption_file.df_html | safe }}
+    </div>
+</div>
+
+
+<br><br><br>
+
+{% endblock %}

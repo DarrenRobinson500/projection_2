@@ -1,0 +1,17 @@
+<nav class="navbar navbar-light navbar-expand-xl" style="background-color: #ffc0cb;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'home' %}">Projection</a>
+
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="{% url 'list' 'setting' %}">Settings</a></li>
+          <li class="nav-item"><a class="nav-link active" href="{% url 'list' 'file' %}">Files</a></li>
+          <li class="nav-item"><a class="nav-link active" href="{% url 'list' 'data' %}">Data</a></li>
+          <li class="nav-item"><a class="nav-link active" href="{% url 'list' 'join' %}">Joins</a></li>
+          <li class="nav-item"><a class="nav-link active" href="{% url 'list' 'period' %}">Periods</a></li>
+          <li class="nav-item"><a class="nav-link active" href="{% url 'list' 'dnn' %}">DNNs</a></li>
+          <li class="nav-item"><a class="nav-link active" href="{% url 'list' 'projection' %}">Projections</a></li>
+          <li class="nav-item"><a class="nav-link active" href="{% url 'list' 'proj_ind' %}">Proj_Ind</a></li>
+
+        </ul>
+  </div>
+</nav>

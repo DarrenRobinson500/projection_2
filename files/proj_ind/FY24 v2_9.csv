@@ -1,0 +1,2 @@
+number,age_0,adviser_0,fum_s_0,dur_s_0,age_1,adviser_1,fum_s_1,dur_s_1,cat,Start,Less Profit,Rollforward,Expected,End,Delta,Link
+9,20.0,1.0,10000.0,5.0,20.0,1.0,10094.0,5.0,continuing,305.78,-100.0,20.578,226.35800000000003,308.66,82.30199999999999,http://127.0.0.1:8000/show/2/9

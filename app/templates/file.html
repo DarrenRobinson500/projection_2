@@ -1,0 +1,15 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<h3>Data File: {{ item.name }}</h3>
+<a href="{% url 'list' model_str %}">All {{ model_str | capfirst }}s</a><br><br>
+
+Shape: {{ item.df.shape }}
+{{ item.df_html | safe }}
+
+<br><br>
+<a class="btn btn-yak" href="{% url 'delete' model_str item.id %}">Delete</a>
+
+<br><br><br>
+
+{% endblock %}

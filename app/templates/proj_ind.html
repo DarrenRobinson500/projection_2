@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+{% block content %}
+<h1>Individual Projection</h1>
+<a class="btn btn-yak" href="{% url 'show' item.projection.id item.id True %}">Force Recalc</a>
+
+<h3>Input Data</h3>
+{{ item.input_df_html | safe }}
+<h3>Projection Summary</h3>
+{{ item.file.df_html | safe }}
+
+<div class="row">
+    <div class="col-sm-6">
+        <h3>Start of Period Projection</h3>
+        {{ item.file_start.df_html | safe }}
+    </div>
+    <div class="col-sm-6">
+        <h3>End of Period Projection</h3>
+        {{ item.file_start.df_html | safe }}
+    </div>
+</div>
+
+{% endblock %}

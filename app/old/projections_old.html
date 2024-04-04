@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+{% block content %}
+<h1>Projections</h1>
+<table class="table">
+    <thead style="background-color: #ffe5ea;">
+        <th>Name</th>
+        <th>Action</th>
+    </thead>
+    <tbody>
+    {% for item in lapse_analyses %}
+    <tr style="text-align: left">
+        <td><a href="{% url 'model_ind' item.id %}">{{ item.projection }}</a></td>
+        <td>
+            {% if item.model %}
+                <a class="btn btn-yak" href="{% url 'data_ind' item.projection.id %}" style="margin-block: 10px;">View</a>
+            {% else %}
+                <a class="btn btn-yak" href="{% url 'model_run' item.id %}">Create Model</a>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<br><br><br>
+
+{% endblock %}

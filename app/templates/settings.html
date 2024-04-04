@@ -1,0 +1,24 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<h3>{{ model_str | capfirst }}s</h3>
+<table class="table">
+    <thead style="background-color: #ffe5ea;">
+        <th>Name</th>
+        <th>Projection</th>
+        <th>Action</th>
+    </thead>
+
+    {% for item in items %}
+    <tr>
+        <td>{{ item.name }} </td>
+        <td>{{ item.projection }} </td>
+        <td>
+            <a class="btn btn-yak" href="{% url 'item' model_str item.id %}">View</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<a class="btn btn-yak" href="{% url 'new' model_str %}">Create {{ model_str }}</a><br><br>
+{% endblock %}

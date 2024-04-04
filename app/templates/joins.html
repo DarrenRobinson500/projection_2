@@ -1,0 +1,31 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<h3>Joins</h3>
+<table class="table">
+    <thead style="background-color: #ffe5ea;">
+        <th>Name</th>
+        <th>Data - Start</th>
+        <th>Data - End</th>
+        <th>Data</th>
+        <th>Action</th>
+    </thead>
+
+    {% for item in items %}
+        {% if item.df is not None %}
+            <tr>
+                <td>
+                    <b>{{ item }} </b><br>
+                    Shape: {{ item.df.shape }}<br>
+                    Date: {{ item.end_date }}
+                </td>
+                <td><a class="btn btn-yak" href="{% url 'item' 'data' item.start.id %}">{{ item.start }}<br>Shape: {{ item.start.file.df.shape }}</a></td>
+                <td><a class="btn btn-yak" href="{% url 'item' 'data' item.end.id %}">{{ item.end }}<br>Shape: {{ item.end.file.df.shape }}</a></td>
+                <td> {{ item.file.df_top_html | safe }} </td>
+                <td><a class="btn btn-yak" href="{% url 'item' model_str item.id %}">View</a></td>
+            </tr>
+        {% endif %}
+    {% endfor %}
+</table>
+
+{% endblock %}

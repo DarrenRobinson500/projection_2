@@ -1,0 +1,16 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<h3>Join File: {{ item.name }}</h3>
+<a href="{% url 'list' model_str %}">All {{ model_str | capfirst }}s</a><br>
+
+
+Shape: {{ item.file.df.shape }}
+<h3>Reconciliation</h3>
+{{ item.df_rec | safe }}
+<h3>Data</h3>
+{{ item.file.df_html | safe }}
+
+<br><br><br>
+
+{% endblock %}

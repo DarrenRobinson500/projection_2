@@ -1,0 +1,12 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<h1>{{ mode }} {{model_str | capfirst}}</h1>
+
+<form class="form-inline my-2 my-lg-0" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-yak">{% if mode == "New" %}Create{% else %}Update{% endif %}</button>
+</form>
+
+{% endblock %}
