@@ -1,7 +1,27 @@
 {% extends 'base.html'%}
 {% block content %}
-<h1>Home</h1>
-    <a class="btn btn-yak" href="{% url 'data_create' %}">Create Data</a>
 
+<h3>Home</h3>
+<table class="table">
+    <thead style="background-color: #ffe5ea;">
+        <th>Model</th>
+        <th>Items</th>
+        <th>Action</th>
+    </thead>
+    {% for model_str, items in all %}
+        <tr>
+            <td>
+                <a href="{% url 'list' model_str %}">{{ model_str | capfirst }}s</a></td>
+            <td>
+                {% for item in items %}
+                    <a class="btn btn-yak" href="{% url 'item' model_str item.id %}">{{ item }}</a>
+                {% endfor %}
+            </td>
+            <td>
+                <a class="btn btn-yak" href="{% url 'delete_all' model_str %}">Delete all {{ model_str }}s</a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
 
 {% endblock %}

@@ -2,9 +2,13 @@ from keras.models import load_model
 from .utilities import *
 from keras import Input
 from keras import Model as KerasModel
+from keras import Sequential
+from keras.layers import Dense
 import matplotlib.pyplot as plt
 import mpld3
 import math, random
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler
 
 import os
 import pandas as pd
@@ -25,7 +29,7 @@ formatters = {
     'dur_s_0': format_int, 'dur_s_1': format_int,
     'rate': format_2dp,
     'age_0': format_int, 'age_1': format_int,
-    'adviser_0': format_int,'adviser_1': format_int,
+    # 'adviser_0': format_int,'adviser_1': format_int,
     'Start': format_dollars, 'Less Profit': format_dollars, 'Rollforward': format_dollars,
     'Expected': format_dollars, 'End': format_dollars, 'Delta': format_dollars,
 }
@@ -66,6 +70,15 @@ class FileModel(Model):
         else: "No name given"
 
         return self.name
+
+    def col_types(self):
+        df = self.df()
+        if df is None: return
+        # result = []
+        # for col in df:
+        #     result.append((col, col.dtype))
+        print("Col types:", type(df.dtypes))
+        return df.dtypes
 
     def owner(self):
         if self.type == "data": model = Data
@@ -128,20 +141,30 @@ class FileModel(Model):
             df_total = pd.concat([df_group, df_total], axis=0)
 
             html += f"<h3>{heading}</h3>" + df_total.to_html(classes=['table', 'table-striped', 'table-center'], index=True, justify='center', formatters=formatters)
-        html += f"<h3>All Records</h3>"
+        # html += f"<h3>All Records</h3>"
         # html.replace(">http://127.0.0.1:8000/show/", "Show ")
 
         return html
 
     def df_top(self):
-        df = pd.read_csv(str(self.name), nrows=4)
-        return df
+        try:
+            df = pd.read_csv(str(self.name), nrows=4)
+            return df
+        except:
+            return
 
     def df_top_html(self):
-        return self.df_top().to_html(classes=['table', 'table-striped', 'table-center'], index=False, justify='center', formatters=formatters, render_links=True,)
+        try:
+            return self.df_top().to_html(classes=['table', 'table-striped', 'table-center'], index=False, justify='center', formatters=formatters, render_links=True,)
+        except:
+            return
 
     def delete(self, *args, **kwargs):
-        self.document.delete()
+        try:
+            print(f"Deleted: {self.name}")
+            os.remove(self.name)
+        except FileNotFoundError:
+            print(f"File not found: {self.name}")
         super().delete(*args, **kwargs)
 
 def create_first_data():
@@ -152,7 +175,7 @@ def create_first_data():
     for age in AGE_RANGE:
         for adviser in ADVISER_RANGE:
             for x in range(10):
-                data.append((i, age, adviser, fum, dur))
+                data.append((i, age, adviser, fum * age, dur))
                 i += 1
 
     name = "30_Jun_23"
@@ -188,10 +211,14 @@ class Data(Model):
     name = CharField(max_length=512, null=True)
     date = DateField(null=True, blank=True)
     file = ForeignKey(FileModel, related_name="data_file", on_delete=SET_NULL, null=True)
+    df = None
     index = IntegerField(null=True, blank=True)
     def __str__(self):
         if self.name: return self.name
         else: "No name given"
+
+    def join(self):
+        return Join.objects.filter(end=self).first()
 
     def month_string(self):
         return f"{month_string(self.date.month)} {self.date.year}"
@@ -216,10 +243,16 @@ class Data(Model):
 
         setting = Setting.objects.all().first()
         projection = setting.projection
-        table = projection.dnn.assumption_file.df()
+        try:
+            table = projection.dnn.assumption_file.df()
+        except:
+            table = pd.read_csv(str("files/dummy/rate.csv"))
+            # print("Used dummy data")
+        # print("Add lapse rates table:\n", table)
         row = table.loc[(table['age_0'] == age) & (table['adviser_0'] == adviser)]
         annual_rate = row.iloc[0]['rate']
         rate = 1 - (1 - annual_rate) ** (1/12)
+        # print("Rate:", annual_rate, rate)
         random_number = random.random()
         if random_number < rate: return "Delete"
         return "Keep"
@@ -230,7 +263,7 @@ class Data(Model):
         else:
             index = self.index + 1
         fum, duration = 100000, 0
-        for age in AGE_RANGE_NEW:
+        for age in AGE_RANGE:
             for adviser in ADVISER_RANGE:
                     index += 1
                     # new_row = {'number': index, 'age': age, 'adviser': adviser, 'fum': fum}
@@ -245,6 +278,13 @@ class Data(Model):
         df['fum_s'] = df['fum_s'] * ( 1 + inv_return)
         return df
 
+    def files(self):
+        return [self.file, ]
+
+    def delete(self, *args, **kwargs):
+        for file in self.files():
+            file.delete()
+        super().delete(*args, **kwargs)
 
 class Join(Model):
     name = CharField(max_length=10, null=True)
@@ -258,9 +298,12 @@ class Join(Model):
         return "No end file"
 
     def df(self):
-        if self.start is None or self.start.file.df() is None: return None
-        if self.end is None or self.end.file.df() is None: return None
-
+        if self.start is None or self.start.file.df() is None:
+            print("Problem with start file")
+            return None
+        if self.end is None or self.end.file.df() is None:
+            print("Problem with end file")
+            return None
         df_s = pd.DataFrame(data=self.start.file.df(), index=None, columns=['number', 'age', 'adviser', 'fum_s', 'dur_s'])
         df_e = pd.DataFrame(data=self.end.file.df(), index=None, columns=['number', 'age', 'adviser', 'fum_s', 'dur_s'])
         df = df_s.join(df_e.set_index('number'), on='number', how='outer', lsuffix='_0', rsuffix='_1')
@@ -288,9 +331,18 @@ class Join(Model):
         return html
 
     def create_file(self):
-        self.file = create_file("join", f"{self}.csv", self.df())
+        self.file = create_file("join", f"{self}", self.df())
         self.end_date = self.end.date
         self.save()
+
+    def files(self):
+        return [self.file, ]
+
+    def delete(self, *args, **kwargs):
+        for file in self.files():
+            if file:
+                file.delete()
+        super().delete(*args, **kwargs)
 
 class Period(Model):
     name = CharField(max_length=10, null=True)
@@ -298,6 +350,7 @@ class Period(Model):
     end_date = DateField(null=True, blank=True)
     file = ForeignKey(FileModel, related_name="period_file", on_delete=SET_NULL, null=True)
     rate_file = ForeignKey(FileModel, related_name="rate_file", on_delete=SET_NULL, null=True)
+    encoded_rate_file = ForeignKey(FileModel, related_name="encoded_rate_file", on_delete=SET_NULL, null=True)
     def __str__(self): return f"{self.start_date} to {self.end_date}"
 
     def joins(self):
@@ -305,48 +358,200 @@ class Period(Model):
 
     def df(self):
         joins = self.joins()
+        # print("Len of joins:", len(joins))
+        if len(joins) == 0: return None
         for count, join in enumerate(joins):
             if count == 0: df = join.df()
             else:
-                df = pd.concat([df, join.df()], ignore_index=True)
+                df_new = join.df()
+                if df_new is not None:
+                    df = pd.concat([df, df_new], ignore_index=True)
         return df
 
     def create_rate_file(self):
-        grouped = self.df().groupby(["age_0", "adviser_0"]).count()
-        survivors = grouped["age_1"]
-        start = grouped["number"]
-        rate = (1 - survivors / start)
-        rate_df = rate.to_frame()
-        rate_df.columns = ['rate', ]
-        rate_df.to_csv("files/rate.csv", index=True, header=True)
-        rate_df = pd.read_csv("files/rate.csv")
+        df = self.df()
 
-        self.rate_file = create_file("rate", f"{self}.csv", rate_df)
+        df['age_0'] = df['age_0'].apply(lambda x: round_to_nearest_multiple(x, base=5))
+        df['age_1'] = df['age_1'].apply(lambda x: round_to_nearest_multiple(x, base=5))
+
+        # print("DF after adding rounding\n", df)
+
+        # grouped = df.groupby(["age_0", "adviser_0", "cat"]).count()
+        # print("DF after adding grouping\n", grouped)
+        df = pd.get_dummies(data=df, columns=['cat'])
+
+        rate = df.groupby(["age_0", "adviser_0"]).sum()
+        rate['rate'] = rate['cat_exit'] / rate['cat_continuing']
+        required_columns = ['cat_continuing', 'cat_exit', 'rate']
+        rate = rate[required_columns]
+        rate = rate[rate['rate'].notna()]
+
+        # rate['age'] = df['age_0']
+        # print("Rate type", type(rate))
+
+
+        # survivors = grouped["age_1"]
+        # start = grouped["number"]
+        # print("Start type", type(start))
+
+        # rate = (1 - survivors / start)
+        # rate_df = rate.to_frame()
+        # rate_df = pd.concat([start, survivors, rate], axis=1)
+        # print("Rate DF", rate_df)
+        # rate_df.columns = ['rate', ]
+        rate.to_csv("files/rate.csv", index=True, header=True)
+        rate = pd.read_csv("files/rate.csv")
+
+        print(rate)
+
+        self.rate_file = create_file("rate", f"{self}", rate)
         self.save()
 
-    def create_file(self):
-        self.file = create_file("period", f"{self}.csv", self.df())
+    def create_encoded_rate_file(self):
+        # Get the rate df
+        df = self.rate_file.df()
+        # Hot encoding
+        df = pd.get_dummies(data=df, columns=['adviser_0'])
+        # True and False to 1 and 0
+        for col in df:
+            df[col].replace({True: 1, False:0}, inplace=True)
+        # Scaling
+        cols_to_scale = ['age_0', ]
+        scaler = MinMaxScaler()
+        df[cols_to_scale] = scaler.fit_transform(df[cols_to_scale])
+        # Save the file
+        self.encoded_rate_file = create_file("rate", f"{self}_encoded", df)
         self.save()
+
+    def create_files(self):
+        # Add all the joins together
+        self.file = create_file("period", f"{self}", self.df())
+        self.save()
+        # Create the rates
         self.create_rate_file()
+        # Encode the data
+        self.create_encoded_rate_file()
+
+    def files(self):
+        return [self.file, self.rate_file, self.encoded_rate_file]
+
+    def delete(self, *args, **kwargs):
+        for file in self.files():
+            file.delete()
+        super().delete(*args, **kwargs)
+
 
 class DNN(Model):
     name = CharField(max_length=30, null=True)
     period = ForeignKey(Period, related_name="period", on_delete=SET_NULL, null=True)
-    epochs = IntegerField(default=50)
+    epochs = IntegerField(default=150)
     assumption_file = ForeignKey(FileModel, related_name="assumption", on_delete=SET_NULL, null=True)
     model = CharField(max_length=512, null=True)
     def __str__(self): return self.name
 
+    def files(self):
+        return [self.assumption_file, ]
+
+    def delete(self, *args, **kwargs):
+        for file in self.files():
+            if file:
+                file.delete()
+        super().delete(*args, **kwargs)
+
     def run(self):
+        df = self.period.rate_file.df()
+        df1 = pd.get_dummies(data=df, columns=['adviser_0'])
+        for col in df1: df1[col].replace({True: 1, False: 0}, inplace=True)
+        cols_to_scale = ['age_0', ]
+        scaler = MinMaxScaler()
+        df1[cols_to_scale] = scaler.fit_transform(df1[cols_to_scale])
+        x = df1.drop(['rate', 'cat_continuing', 'cat_exit'], axis='columns')
+        y = df1['rate']
+
+        model = Sequential([
+            Dense(20, input_shape=(x.shape[1],), activation='relu'),
+            Dense(15, activation='relu'),
+            Dense(10, activation='relu'),
+            Dense(10, activation='relu'),
+            Dense(5, activation='relu'),
+            Dense(1, activation='sigmoid'),
+        ])
+
+        model.compile("adam", "binary_crossentropy", metrics=["MeanSquaredError"])
+        model.fit(x, y, epochs=2000)
+
+        # Save the model
+        print(model.summary())
+        filename = f"models/{self.name}.tf"
+        self.model = filename
+        self.save()
+        if os.path.isfile(filename) is False:
+            model.save(filename)
+        prediction = model.predict(x)
+        df['rate'] = prediction
+        print(df)
+        self.assumption_file = create_file("assumption", self.name, df)
+        self.save()
+
+
+        # self.create_table()
+
+    def create_table(self):
+        if not self.model: return
+        model = load_model(self.model)
+        df_encoded = self.period.encoded_rate_file.df()
+        df = self.period.rate_file.df()
+        x = df_encoded.drop(['rate', 'cat_continuing', 'cat_exit'], axis='columns')
+        print("df_encoded\n", df_encoded)
+        print("x\n", x)
+
+        predictions = model.predict(x)
+        print("Predictions\n", predictions)
+        prediction_list = []
+        for prediction in predictions: prediction_list.append(prediction[0])
+        df['rate'] = prediction_list
+        self.assumption_file = create_file("assumption", self.name, df)
+        self.save()
+
+    def create_table_old(self):
+        if not self.model: return
+        df = self.period.encoded_rate_file.df()
+        df = df.drop('rate', axis='columns')
+        model = load_model(self.model)
+        table = []
+        for age in AGE_RANGE:
+            template = {col: 0 for col in df.columns}
+            template['age_0'] = age
+            for adviser in ADVISER_RANGE:
+                sample = template
+                adviser_column = 'adviser_0_' + adviser
+                sample[adviser_column] = 1
+                print(sample)
+                input_dict = {name: tf.convert_to_tensor([value]) for name, value in sample.items()}
+                prediction = round(model.predict(input_dict)[0][0], 3)
+                row = (age, adviser, prediction)
+                table.append(row)
+        df = pd.DataFrame(data=table, index=None, columns=['age_0', 'adviser_0', 'rate'])
+        self.assumption_file = create_file("assumption", self.name, df)
+        self.save()
+
+
+    def run_old(self):
         train_dataframe = self.period.rate_file.df()
         train_ds = dataframe_to_dataset(train_dataframe, "rate")
         train_ds = train_ds.batch(32)
 
         # Encode the data
         age = Input(shape=(1,), name="age_0")
-        adviser = Input(shape=(1,), name="adviser_0", dtype="int64")
+        adviser = Input(shape=(1,), name="adviser_0")
         age_encoded = encode_numerical_feature(age, "age_0", train_ds)
-        adviser_encoded = encode_categorical_feature(adviser, "adviser_0", train_ds, False)
+        adviser_encoded = encode_categorical_feature(adviser, "adviser_0", train_ds, is_string=True)
+
+        print("\nage:\n", age)
+        print("\nage encoded:\n", age_encoded)
+        print("\nadviser:\n", adviser)
+        print("\nadviser encoded:\n", adviser_encoded)
+
 
         all_inputs = [age, adviser,]
         all_features = concatenate([age_encoded, adviser_encoded,])
@@ -371,32 +576,19 @@ class DNN(Model):
             model.save(filename)
         self.create_table()
 
-    def create_table(self):
-        if not self.model: return
-        model = load_model(self.model)
-
-        AGE_RANGE = range(20,66)
-        ADVISER_RANGE = [1, 2, 3]
-
-        table = []
-        for age in AGE_RANGE:
-            for adviser in ADVISER_RANGE:
-                sample = {"age_0": age, "adviser_0": adviser, }
-                input_dict = {name: tf.convert_to_tensor([value]) for name, value in sample.items()}
-                prediction = round(model.predict(input_dict)[0][0], 3)
-                row = (age, adviser, prediction)
-                table.append(row)
-        df = pd.DataFrame(data=table, index=None, columns=['age_0', 'adviser_0', 'rate'])
-        self.assumption_file = create_file("assumption", self.name, df)
-        self.save()
-
     def plot_in(self):
-        df = self.period.rate_file.df()
-        return self.plot(df)
+        try:
+            df = self.period.rate_file.df()
+            return self.plot(df)
+        except:
+            return
 
     def plot_out(self):
-        df = self.assumption_file.df()
-        return self.plot(df)
+        try:
+            df = self.assumption_file.df()
+            return self.plot(df)
+        except:
+            return
 
     def plot(self, df):
         if df is None: return
@@ -422,19 +614,35 @@ def get_category(info):
     if math.isnan(age_s_1): return "exit"
     return "continuing"
 
+
+time_proj_1 = None
+db = None
+proj_count = 0
 class Projection(Model):
     name = CharField(max_length=60, null=True)
     start = ForeignKey(Data, blank=True, null=True, on_delete=SET_NULL, related_name="start_data")
     end = ForeignKey(Data, blank=True, null=True, on_delete=SET_NULL, related_name="end_data")
     dnn = ForeignKey(DNN, blank=True, null=True, on_delete=SET_NULL, related_name="dnn_model")
     end_date = DateField(null=True, blank=True)
+    proj_period = IntegerField(blank=True, null=True, default=5)
     file = ForeignKey(FileModel, related_name="projection_file", on_delete=SET_NULL, null=True)
+    file_time_proj = ForeignKey(FileModel, related_name="time_proj", on_delete=SET_NULL, null=True)
+    file_db = ForeignKey(FileModel, related_name="db", on_delete=SET_NULL, null=True)
     input_df = None
     assumption_df = None
     output_df = None
+
     def __str__(self):
         if self.name: return self.name
         else: "No name given"
+
+    def files(self):
+        return self.file, self.file_time_proj, self.file_db
+
+    def delete(self, *args, **kwargs):
+        for file in self.files():
+            file.delete()
+        super().delete(*args, **kwargs)
 
     def get_input_df(self):
         try:
@@ -452,12 +660,15 @@ class Projection(Model):
         self.input_df = self.get_input_df()
         self.save()
         # Run
-        output_df = self.run_df(self.input_df)
+        output_df, time_proj, db_file = self.run_df(self.input_df)
         # Save results
         self.file = create_file("projection", self.name, output_df)
+        self.file_time_proj = time_proj
+        self.file_db = db_file
         self.save()
 
     def run_df(self, df, proj_ind=None):
+        global time_proj_1
         # Get assumptions
         if not self.assumption_df:
             self.assumption_df = self.dnn.assumption_file.df()
@@ -471,25 +682,29 @@ class Projection(Model):
         # Add calculated variables
         output_df = input_df.apply(self.run_policy_aoc, proj_ind=proj_ind, axis=1)
         output_df = pd.concat([input_df, output_df], axis=1)
-        return output_df
+        time_proj_1['Time'] = np.arange(self.proj_period)
+        time_proj = create_file("time proj", self.name, time_proj_1)
+        db_file = create_file("proj_db", self.name, db)
+        return output_df, time_proj, db_file
 
     def run_policy_aoc(self, info, proj_ind=None):
         info_0 = info[1:5]
         info_1 = info[5:9]
+        time_proj_df = None
 
-        output_0, detail_0 = self.run_policy(info_0, time_period=0, proj_ind=proj_ind)
-        output_1, detail_1 = self.run_policy(info_1, time_period=1, proj_ind=proj_ind)
+        output_0 = self.run_policy(info_0, time_period=0, proj_ind=proj_ind)
+        output_1 = self.run_policy(info_1, time_period=1, proj_ind=proj_ind)
 
         output_0.rename({0: "Start", 1: "Less Profit", 2: "Rollforward", 3: "Expected"}, inplace=True)
         output_1.rename({0: "End"}, inplace=True)
-        output_d = pd.Series([output_1["End"] - output_0["Expected"], f"http://127.0.0.1:8000/show/{self.id}/{info[0]}"])
+        output_d = pd.Series([output_1["End"] - output_0["Expected"], f"http://127.0.0.1:8000/show/{self.id}/{info.iloc[0]}"])
         output_d.rename({0: "Delta", 1: "Link"}, inplace=True)
         output = pd.concat([output_0, output_1, output_d])
-        self.acc_detail = detail_1
 
         return output
 
     def run_policy(self, data, time_period, proj_ind=None):
+        global time_proj_1, proj_count, db
         # Data (for reading a series)
         age_s = data[f'age_{time_period}']
         fum_s = data[f'fum_s_{time_period}']
@@ -500,7 +715,7 @@ class Projection(Model):
             else:                return pd.Series([0, ])
 
         # Time
-        time = np.arange(65-age_s)
+        time = np.arange(self.proj_period)
         age = age_s + time
 
         # Economic Assumptions
@@ -530,37 +745,52 @@ class Projection(Model):
         pv_profit_1_e = round(sum(profit_disc[1:]),2) * (1 + discount_rate)
         roll_forward = (pv_profit_0 - profit[0]) * discount_rate
 
+        time = pd.Series(time)
+        age = pd.Series(age)
+        adviser = pd.Series([adviser] * self.proj_period)
+        policies = pd.Series(policies)
+        fum = pd.Series(fum)
+        profit = pd.Series(profit)
+        time_proj_ind = pd.concat([time, policies, fum, profit], axis=1)
+        time_proj_ind.rename(columns={0: "Time", 1: "Policies", 2: "FUM", 3: "Profit"}, inplace=True)
+        db_ind = pd.concat([time, age, adviser, policies, fum, profit], axis=1)
+        db_ind.rename(columns={0: "Time", 1: "Age", 2: "Adviser", 3: "Policies", 4: "FUM", 5: "Profit"}, inplace=True)
+
         if time_period == 0:
             output = pd.Series([pv_profit_0,-profit[0],roll_forward,pv_profit_1_e])
         else:
             output = pd.Series([pv_profit_0,])
-
-        time = pd.Series(time)
-        policies = pd.Series(policies)
-        fum = pd.Series(fum)
-        profit = pd.Series(profit)
-        detail = pd.concat([time, policies, fum, profit], axis=1)
-        detail.rename(columns={0: "Time", 1: "Policies", 2: "FUM", 3: "Profit"}, inplace=True)
+            if time_proj_1 is None:
+                time_proj_1 = time_proj_ind
+                db = db_ind
+            else:
+                time_proj_1 = time_proj_1.add(time_proj_ind, fill_value=0)
+                db = pd.concat([db, db_ind], axis=0)
+            # if proj_count < 3:
+            #     print(f"Time proj {proj_count} IND \n", time_proj_ind)
+            #     print(f"Time proj {proj_count} TOTAL \n", time_proj_1)
+            # proj_count += 1
 
         if proj_ind:
             name = f"{proj_ind.projection}_{proj_ind.number}_{time_period}"
             if time_period == 0:
-                proj_ind.file_start = create_file("proj_ind", name, detail)
-                print("Created start\n", detail)
+                proj_ind.file_start = create_file("proj_ind", name, time_proj_ind)
             else:
-                proj_ind.file_end = create_file("proj_ind", name, detail)
-                print("Created end\n", detail)
+                proj_ind.file_end = create_file("proj_ind", name, time_proj_ind)
             proj_ind.save()
             # detail.to_csv(f"temp/projection_ind_{time_period}.csv")
-        else:
-            print("No proj ind")
-        return output, detail
+        # else:
+        #     print("No proj ind")
+        return output
 
     def calc_lapse_rate_series(self, table, ages, adviser):
         result = []
         for age in ages:
             row = table.loc[(table['age_0'] == age) & (table['adviser_0'] == adviser)]
-            rate = row.iloc[0]['rate']
+            try:
+                rate = row.iloc[0]['rate']
+            except:
+                rate = 1
             result.append(rate)
         result = pd.Series(result)
         return result

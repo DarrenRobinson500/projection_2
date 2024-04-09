@@ -13,11 +13,15 @@
     <tr>
         <td>
             <b>{{ item.file }} </b><br>
-            Shape: {{ item.file.df.shape }}
+            Shape: {{ item.file.df.shape }}<br>
+            URL: {{ item.file.document }}
         </td>
         <td> {{ item.file.df_top_html | safe }} </td>
         <td>
             <a class="btn btn-yak" href="{% url 'item' model_str item.id %}">View</a>
+            {% if item.join %}
+                <a class="btn btn-yak" href="{% url 'item' 'join' item.join.id %}">View Join</a>
+            {% endif %}
             <a class="btn btn-yak" href="{% url 'data_create_next' item.id %}">Create Next</a>
             <a class="btn btn-yak" href="{% url 'delete' model_str item.id %}">Delete</a>
         </td>
@@ -25,5 +29,5 @@
     {% endfor %}
 </table>
 
-<a class="btn btn-yak" href="{% url 'data_create' %}">Create {{ model_str }}</a><br><br>
+<a class="btn btn-yak" href="{% url 'data_create' %}">Create initial {{ model_str }}</a><br><br>
 {% endblock %}

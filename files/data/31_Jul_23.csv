@@ -1,141 +1,1163 @@
 number,age,adviser,fum_s,dur_s
-1,20,1,10000,5
-2,20,1,10000,5
-3,20,1,10000,5
-4,20,1,10000,5
-5,20,1,10000,5
-6,20,1,10000,5
-7,20,1,10000,5
-8,20,1,10000,5
-9,20,1,10000,5
-10,20,1,10000,5
-11,20,2,10000,5
-12,20,2,10000,5
-13,20,2,10000,5
-14,20,2,10000,5
-15,20,2,10000,5
-16,20,2,10000,5
-17,20,2,10000,5
-18,20,2,10000,5
-19,20,2,10000,5
-20,20,2,10000,5
-21,20,3,10000,5
-22,20,3,10000,5
-23,20,3,10000,5
-24,20,3,10000,5
-25,20,3,10000,5
-26,20,3,10000,5
-27,20,3,10000,5
-28,20,3,10000,5
-29,20,3,10000,5
-30,20,3,10000,5
-31,30,1,10000,5
-32,30,1,10000,5
-33,30,1,10000,5
-34,30,1,10000,5
-35,30,1,10000,5
-36,30,1,10000,5
-37,30,1,10000,5
-38,30,1,10000,5
-39,30,1,10000,5
-40,30,1,10000,5
-41,30,2,10000,5
-42,30,2,10000,5
-43,30,2,10000,5
-44,30,2,10000,5
-45,30,2,10000,5
-46,30,2,10000,5
-47,30,2,10000,5
-48,30,2,10000,5
-49,30,2,10000,5
-50,30,2,10000,5
-51,30,3,10000,5
-52,30,3,10000,5
-53,30,3,10000,5
-54,30,3,10000,5
-55,30,3,10000,5
-56,30,3,10000,5
-57,30,3,10000,5
-58,30,3,10000,5
-59,30,3,10000,5
-60,30,3,10000,5
-61,40,1,10000,5
-62,40,1,10000,5
-63,40,1,10000,5
-64,40,1,10000,5
-65,40,1,10000,5
-66,40,1,10000,5
-67,40,1,10000,5
-68,40,1,10000,5
-69,40,1,10000,5
-71,40,2,10000,5
-72,40,2,10000,5
-73,40,2,10000,5
-74,40,2,10000,5
-75,40,2,10000,5
-76,40,2,10000,5
-78,40,2,10000,5
-79,40,2,10000,5
-80,40,2,10000,5
-81,40,3,10000,5
-82,40,3,10000,5
-84,40,3,10000,5
-85,40,3,10000,5
-86,40,3,10000,5
-87,40,3,10000,5
-88,40,3,10000,5
-89,40,3,10000,5
-90,40,3,10000,5
-91,50,1,10000,5
-92,50,1,10000,5
-93,50,1,10000,5
-94,50,1,10000,5
-95,50,1,10000,5
-96,50,1,10000,5
-97,50,1,10000,5
-98,50,1,10000,5
-99,50,1,10000,5
-100,50,1,10000,5
-101,50,2,10000,5
-102,50,2,10000,5
-103,50,2,10000,5
-104,50,2,10000,5
-105,50,2,10000,5
-106,50,2,10000,5
-107,50,2,10000,5
-108,50,2,10000,5
-109,50,2,10000,5
-110,50,2,10000,5
-111,50,3,10000,5
-112,50,3,10000,5
-113,50,3,10000,5
-114,50,3,10000,5
-115,50,3,10000,5
-116,50,3,10000,5
-117,50,3,10000,5
-118,50,3,10000,5
-119,50,3,10000,5
-120,50,3,10000,5
-121,60,1,10000,5
-122,60,1,10000,5
-123,60,1,10000,5
-124,60,1,10000,5
-125,60,1,10000,5
-126,60,1,10000,5
-127,60,1,10000,5
-128,60,1,10000,5
-129,60,1,10000,5
-130,60,1,10000,5
-131,60,2,10000,5
-133,60,2,10000,5
-134,60,2,10000,5
-136,60,2,10000,5
-137,60,2,10000,5
-138,60,2,10000,5
-139,60,2,10000,5
-140,60,2,10000,5
-144,60,3,10000,5
-145,60,3,10000,5
-146,60,3,10000,5
-147,60,3,10000,5
-171,30,3,100000,0
+1,20,Adviser One,204000.0,5
+3,20,Adviser One,204000.0,5
+5,20,Adviser One,204000.0,5
+6,20,Adviser One,204000.0,5
+7,20,Adviser One,204000.0,5
+8,20,Adviser One,204000.0,5
+9,20,Adviser One,204000.0,5
+10,20,Adviser One,204000.0,5
+11,20,Adviser Two,204000.0,5
+12,20,Adviser Two,204000.0,5
+13,20,Adviser Two,204000.0,5
+14,20,Adviser Two,204000.0,5
+15,20,Adviser Two,204000.0,5
+16,20,Adviser Two,204000.0,5
+17,20,Adviser Two,204000.0,5
+18,20,Adviser Two,204000.0,5
+19,20,Adviser Two,204000.0,5
+20,20,Adviser Two,204000.0,5
+21,20,Adviser Three,204000.0,5
+22,20,Adviser Three,204000.0,5
+23,20,Adviser Three,204000.0,5
+24,20,Adviser Three,204000.0,5
+25,20,Adviser Three,204000.0,5
+26,20,Adviser Three,204000.0,5
+27,20,Adviser Three,204000.0,5
+28,20,Adviser Three,204000.0,5
+29,20,Adviser Three,204000.0,5
+30,20,Adviser Three,204000.0,5
+31,21,Adviser One,214200.0,5
+32,21,Adviser One,214200.0,5
+33,21,Adviser One,214200.0,5
+34,21,Adviser One,214200.0,5
+35,21,Adviser One,214200.0,5
+36,21,Adviser One,214200.0,5
+37,21,Adviser One,214200.0,5
+38,21,Adviser One,214200.0,5
+39,21,Adviser One,214200.0,5
+40,21,Adviser One,214200.0,5
+41,21,Adviser Two,214200.0,5
+42,21,Adviser Two,214200.0,5
+43,21,Adviser Two,214200.0,5
+44,21,Adviser Two,214200.0,5
+45,21,Adviser Two,214200.0,5
+46,21,Adviser Two,214200.0,5
+47,21,Adviser Two,214200.0,5
+48,21,Adviser Two,214200.0,5
+49,21,Adviser Two,214200.0,5
+50,21,Adviser Two,214200.0,5
+51,21,Adviser Three,214200.0,5
+52,21,Adviser Three,214200.0,5
+53,21,Adviser Three,214200.0,5
+54,21,Adviser Three,214200.0,5
+55,21,Adviser Three,214200.0,5
+56,21,Adviser Three,214200.0,5
+57,21,Adviser Three,214200.0,5
+58,21,Adviser Three,214200.0,5
+59,21,Adviser Three,214200.0,5
+60,21,Adviser Three,214200.0,5
+61,22,Adviser One,224400.0,5
+62,22,Adviser One,224400.0,5
+63,22,Adviser One,224400.0,5
+64,22,Adviser One,224400.0,5
+65,22,Adviser One,224400.0,5
+66,22,Adviser One,224400.0,5
+67,22,Adviser One,224400.0,5
+69,22,Adviser One,224400.0,5
+70,22,Adviser One,224400.0,5
+71,22,Adviser Two,224400.0,5
+72,22,Adviser Two,224400.0,5
+73,22,Adviser Two,224400.0,5
+74,22,Adviser Two,224400.0,5
+75,22,Adviser Two,224400.0,5
+76,22,Adviser Two,224400.0,5
+77,22,Adviser Two,224400.0,5
+78,22,Adviser Two,224400.0,5
+79,22,Adviser Two,224400.0,5
+80,22,Adviser Two,224400.0,5
+81,22,Adviser Three,224400.0,5
+82,22,Adviser Three,224400.0,5
+83,22,Adviser Three,224400.0,5
+84,22,Adviser Three,224400.0,5
+85,22,Adviser Three,224400.0,5
+86,22,Adviser Three,224400.0,5
+87,22,Adviser Three,224400.0,5
+88,22,Adviser Three,224400.0,5
+89,22,Adviser Three,224400.0,5
+90,22,Adviser Three,224400.0,5
+91,23,Adviser One,234600.0,5
+92,23,Adviser One,234600.0,5
+93,23,Adviser One,234600.0,5
+94,23,Adviser One,234600.0,5
+95,23,Adviser One,234600.0,5
+96,23,Adviser One,234600.0,5
+97,23,Adviser One,234600.0,5
+98,23,Adviser One,234600.0,5
+99,23,Adviser One,234600.0,5
+100,23,Adviser One,234600.0,5
+101,23,Adviser Two,234600.0,5
+102,23,Adviser Two,234600.0,5
+103,23,Adviser Two,234600.0,5
+104,23,Adviser Two,234600.0,5
+105,23,Adviser Two,234600.0,5
+106,23,Adviser Two,234600.0,5
+107,23,Adviser Two,234600.0,5
+108,23,Adviser Two,234600.0,5
+109,23,Adviser Two,234600.0,5
+110,23,Adviser Two,234600.0,5
+111,23,Adviser Three,234600.0,5
+112,23,Adviser Three,234600.0,5
+113,23,Adviser Three,234600.0,5
+114,23,Adviser Three,234600.0,5
+115,23,Adviser Three,234600.0,5
+116,23,Adviser Three,234600.0,5
+117,23,Adviser Three,234600.0,5
+118,23,Adviser Three,234600.0,5
+119,23,Adviser Three,234600.0,5
+120,23,Adviser Three,234600.0,5
+121,24,Adviser One,244800.0,5
+122,24,Adviser One,244800.0,5
+123,24,Adviser One,244800.0,5
+124,24,Adviser One,244800.0,5
+125,24,Adviser One,244800.0,5
+126,24,Adviser One,244800.0,5
+127,24,Adviser One,244800.0,5
+128,24,Adviser One,244800.0,5
+129,24,Adviser One,244800.0,5
+130,24,Adviser One,244800.0,5
+131,24,Adviser Two,244800.0,5
+132,24,Adviser Two,244800.0,5
+133,24,Adviser Two,244800.0,5
+134,24,Adviser Two,244800.0,5
+135,24,Adviser Two,244800.0,5
+136,24,Adviser Two,244800.0,5
+137,24,Adviser Two,244800.0,5
+138,24,Adviser Two,244800.0,5
+139,24,Adviser Two,244800.0,5
+140,24,Adviser Two,244800.0,5
+141,24,Adviser Three,244800.0,5
+142,24,Adviser Three,244800.0,5
+143,24,Adviser Three,244800.0,5
+144,24,Adviser Three,244800.0,5
+145,24,Adviser Three,244800.0,5
+146,24,Adviser Three,244800.0,5
+147,24,Adviser Three,244800.0,5
+148,24,Adviser Three,244800.0,5
+149,24,Adviser Three,244800.0,5
+150,24,Adviser Three,244800.0,5
+151,25,Adviser One,255000.0,5
+152,25,Adviser One,255000.0,5
+153,25,Adviser One,255000.0,5
+154,25,Adviser One,255000.0,5
+155,25,Adviser One,255000.0,5
+156,25,Adviser One,255000.0,5
+157,25,Adviser One,255000.0,5
+158,25,Adviser One,255000.0,5
+159,25,Adviser One,255000.0,5
+160,25,Adviser One,255000.0,5
+161,25,Adviser Two,255000.0,5
+162,25,Adviser Two,255000.0,5
+163,25,Adviser Two,255000.0,5
+164,25,Adviser Two,255000.0,5
+165,25,Adviser Two,255000.0,5
+166,25,Adviser Two,255000.0,5
+167,25,Adviser Two,255000.0,5
+168,25,Adviser Two,255000.0,5
+169,25,Adviser Two,255000.0,5
+170,25,Adviser Two,255000.0,5
+171,25,Adviser Three,255000.0,5
+172,25,Adviser Three,255000.0,5
+173,25,Adviser Three,255000.0,5
+174,25,Adviser Three,255000.0,5
+175,25,Adviser Three,255000.0,5
+176,25,Adviser Three,255000.0,5
+177,25,Adviser Three,255000.0,5
+178,25,Adviser Three,255000.0,5
+179,25,Adviser Three,255000.0,5
+180,25,Adviser Three,255000.0,5
+181,26,Adviser One,265200.0,5
+182,26,Adviser One,265200.0,5
+183,26,Adviser One,265200.0,5
+184,26,Adviser One,265200.0,5
+185,26,Adviser One,265200.0,5
+186,26,Adviser One,265200.0,5
+187,26,Adviser One,265200.0,5
+188,26,Adviser One,265200.0,5
+189,26,Adviser One,265200.0,5
+190,26,Adviser One,265200.0,5
+192,26,Adviser Two,265200.0,5
+194,26,Adviser Two,265200.0,5
+195,26,Adviser Two,265200.0,5
+196,26,Adviser Two,265200.0,5
+197,26,Adviser Two,265200.0,5
+198,26,Adviser Two,265200.0,5
+199,26,Adviser Two,265200.0,5
+200,26,Adviser Two,265200.0,5
+201,26,Adviser Three,265200.0,5
+203,26,Adviser Three,265200.0,5
+204,26,Adviser Three,265200.0,5
+205,26,Adviser Three,265200.0,5
+206,26,Adviser Three,265200.0,5
+207,26,Adviser Three,265200.0,5
+208,26,Adviser Three,265200.0,5
+209,26,Adviser Three,265200.0,5
+210,26,Adviser Three,265200.0,5
+211,27,Adviser One,275400.0,5
+212,27,Adviser One,275400.0,5
+213,27,Adviser One,275400.0,5
+214,27,Adviser One,275400.0,5
+215,27,Adviser One,275400.0,5
+216,27,Adviser One,275400.0,5
+217,27,Adviser One,275400.0,5
+218,27,Adviser One,275400.0,5
+219,27,Adviser One,275400.0,5
+220,27,Adviser One,275400.0,5
+221,27,Adviser Two,275400.0,5
+222,27,Adviser Two,275400.0,5
+223,27,Adviser Two,275400.0,5
+224,27,Adviser Two,275400.0,5
+225,27,Adviser Two,275400.0,5
+226,27,Adviser Two,275400.0,5
+227,27,Adviser Two,275400.0,5
+228,27,Adviser Two,275400.0,5
+229,27,Adviser Two,275400.0,5
+230,27,Adviser Two,275400.0,5
+231,27,Adviser Three,275400.0,5
+232,27,Adviser Three,275400.0,5
+233,27,Adviser Three,275400.0,5
+234,27,Adviser Three,275400.0,5
+235,27,Adviser Three,275400.0,5
+236,27,Adviser Three,275400.0,5
+237,27,Adviser Three,275400.0,5
+238,27,Adviser Three,275400.0,5
+239,27,Adviser Three,275400.0,5
+240,27,Adviser Three,275400.0,5
+241,28,Adviser One,285600.0,5
+242,28,Adviser One,285600.0,5
+243,28,Adviser One,285600.0,5
+244,28,Adviser One,285600.0,5
+245,28,Adviser One,285600.0,5
+246,28,Adviser One,285600.0,5
+247,28,Adviser One,285600.0,5
+248,28,Adviser One,285600.0,5
+249,28,Adviser One,285600.0,5
+250,28,Adviser One,285600.0,5
+251,28,Adviser Two,285600.0,5
+252,28,Adviser Two,285600.0,5
+253,28,Adviser Two,285600.0,5
+254,28,Adviser Two,285600.0,5
+255,28,Adviser Two,285600.0,5
+256,28,Adviser Two,285600.0,5
+257,28,Adviser Two,285600.0,5
+258,28,Adviser Two,285600.0,5
+259,28,Adviser Two,285600.0,5
+260,28,Adviser Two,285600.0,5
+261,28,Adviser Three,285600.0,5
+262,28,Adviser Three,285600.0,5
+263,28,Adviser Three,285600.0,5
+264,28,Adviser Three,285600.0,5
+265,28,Adviser Three,285600.0,5
+266,28,Adviser Three,285600.0,5
+267,28,Adviser Three,285600.0,5
+268,28,Adviser Three,285600.0,5
+269,28,Adviser Three,285600.0,5
+270,28,Adviser Three,285600.0,5
+272,29,Adviser One,295800.0,5
+273,29,Adviser One,295800.0,5
+274,29,Adviser One,295800.0,5
+275,29,Adviser One,295800.0,5
+276,29,Adviser One,295800.0,5
+277,29,Adviser One,295800.0,5
+278,29,Adviser One,295800.0,5
+279,29,Adviser One,295800.0,5
+280,29,Adviser One,295800.0,5
+281,29,Adviser Two,295800.0,5
+282,29,Adviser Two,295800.0,5
+283,29,Adviser Two,295800.0,5
+284,29,Adviser Two,295800.0,5
+285,29,Adviser Two,295800.0,5
+286,29,Adviser Two,295800.0,5
+287,29,Adviser Two,295800.0,5
+288,29,Adviser Two,295800.0,5
+289,29,Adviser Two,295800.0,5
+290,29,Adviser Two,295800.0,5
+291,29,Adviser Three,295800.0,5
+292,29,Adviser Three,295800.0,5
+293,29,Adviser Three,295800.0,5
+294,29,Adviser Three,295800.0,5
+295,29,Adviser Three,295800.0,5
+296,29,Adviser Three,295800.0,5
+297,29,Adviser Three,295800.0,5
+298,29,Adviser Three,295800.0,5
+299,29,Adviser Three,295800.0,5
+300,29,Adviser Three,295800.0,5
+301,30,Adviser One,306000.0,5
+302,30,Adviser One,306000.0,5
+303,30,Adviser One,306000.0,5
+304,30,Adviser One,306000.0,5
+305,30,Adviser One,306000.0,5
+306,30,Adviser One,306000.0,5
+307,30,Adviser One,306000.0,5
+308,30,Adviser One,306000.0,5
+309,30,Adviser One,306000.0,5
+310,30,Adviser One,306000.0,5
+311,30,Adviser Two,306000.0,5
+312,30,Adviser Two,306000.0,5
+313,30,Adviser Two,306000.0,5
+314,30,Adviser Two,306000.0,5
+315,30,Adviser Two,306000.0,5
+316,30,Adviser Two,306000.0,5
+317,30,Adviser Two,306000.0,5
+318,30,Adviser Two,306000.0,5
+319,30,Adviser Two,306000.0,5
+320,30,Adviser Two,306000.0,5
+321,30,Adviser Three,306000.0,5
+322,30,Adviser Three,306000.0,5
+323,30,Adviser Three,306000.0,5
+324,30,Adviser Three,306000.0,5
+325,30,Adviser Three,306000.0,5
+326,30,Adviser Three,306000.0,5
+327,30,Adviser Three,306000.0,5
+328,30,Adviser Three,306000.0,5
+329,30,Adviser Three,306000.0,5
+330,30,Adviser Three,306000.0,5
+331,31,Adviser One,316200.0,5
+332,31,Adviser One,316200.0,5
+333,31,Adviser One,316200.0,5
+334,31,Adviser One,316200.0,5
+335,31,Adviser One,316200.0,5
+336,31,Adviser One,316200.0,5
+337,31,Adviser One,316200.0,5
+338,31,Adviser One,316200.0,5
+339,31,Adviser One,316200.0,5
+340,31,Adviser One,316200.0,5
+341,31,Adviser Two,316200.0,5
+342,31,Adviser Two,316200.0,5
+343,31,Adviser Two,316200.0,5
+344,31,Adviser Two,316200.0,5
+345,31,Adviser Two,316200.0,5
+346,31,Adviser Two,316200.0,5
+347,31,Adviser Two,316200.0,5
+348,31,Adviser Two,316200.0,5
+349,31,Adviser Two,316200.0,5
+350,31,Adviser Two,316200.0,5
+351,31,Adviser Three,316200.0,5
+352,31,Adviser Three,316200.0,5
+353,31,Adviser Three,316200.0,5
+354,31,Adviser Three,316200.0,5
+355,31,Adviser Three,316200.0,5
+356,31,Adviser Three,316200.0,5
+357,31,Adviser Three,316200.0,5
+358,31,Adviser Three,316200.0,5
+359,31,Adviser Three,316200.0,5
+360,31,Adviser Three,316200.0,5
+361,32,Adviser One,326400.0,5
+362,32,Adviser One,326400.0,5
+363,32,Adviser One,326400.0,5
+364,32,Adviser One,326400.0,5
+365,32,Adviser One,326400.0,5
+366,32,Adviser One,326400.0,5
+367,32,Adviser One,326400.0,5
+368,32,Adviser One,326400.0,5
+369,32,Adviser One,326400.0,5
+370,32,Adviser One,326400.0,5
+371,32,Adviser Two,326400.0,5
+372,32,Adviser Two,326400.0,5
+373,32,Adviser Two,326400.0,5
+374,32,Adviser Two,326400.0,5
+375,32,Adviser Two,326400.0,5
+376,32,Adviser Two,326400.0,5
+377,32,Adviser Two,326400.0,5
+378,32,Adviser Two,326400.0,5
+379,32,Adviser Two,326400.0,5
+380,32,Adviser Two,326400.0,5
+381,32,Adviser Three,326400.0,5
+382,32,Adviser Three,326400.0,5
+383,32,Adviser Three,326400.0,5
+384,32,Adviser Three,326400.0,5
+385,32,Adviser Three,326400.0,5
+386,32,Adviser Three,326400.0,5
+387,32,Adviser Three,326400.0,5
+388,32,Adviser Three,326400.0,5
+389,32,Adviser Three,326400.0,5
+390,32,Adviser Three,326400.0,5
+391,33,Adviser One,336600.0,5
+392,33,Adviser One,336600.0,5
+393,33,Adviser One,336600.0,5
+394,33,Adviser One,336600.0,5
+395,33,Adviser One,336600.0,5
+396,33,Adviser One,336600.0,5
+397,33,Adviser One,336600.0,5
+398,33,Adviser One,336600.0,5
+399,33,Adviser One,336600.0,5
+400,33,Adviser One,336600.0,5
+401,33,Adviser Two,336600.0,5
+402,33,Adviser Two,336600.0,5
+403,33,Adviser Two,336600.0,5
+404,33,Adviser Two,336600.0,5
+405,33,Adviser Two,336600.0,5
+406,33,Adviser Two,336600.0,5
+407,33,Adviser Two,336600.0,5
+408,33,Adviser Two,336600.0,5
+409,33,Adviser Two,336600.0,5
+410,33,Adviser Two,336600.0,5
+411,33,Adviser Three,336600.0,5
+412,33,Adviser Three,336600.0,5
+413,33,Adviser Three,336600.0,5
+414,33,Adviser Three,336600.0,5
+415,33,Adviser Three,336600.0,5
+416,33,Adviser Three,336600.0,5
+417,33,Adviser Three,336600.0,5
+418,33,Adviser Three,336600.0,5
+419,33,Adviser Three,336600.0,5
+420,33,Adviser Three,336600.0,5
+421,34,Adviser One,346800.0,5
+422,34,Adviser One,346800.0,5
+423,34,Adviser One,346800.0,5
+424,34,Adviser One,346800.0,5
+425,34,Adviser One,346800.0,5
+426,34,Adviser One,346800.0,5
+427,34,Adviser One,346800.0,5
+428,34,Adviser One,346800.0,5
+429,34,Adviser One,346800.0,5
+430,34,Adviser One,346800.0,5
+431,34,Adviser Two,346800.0,5
+432,34,Adviser Two,346800.0,5
+433,34,Adviser Two,346800.0,5
+434,34,Adviser Two,346800.0,5
+435,34,Adviser Two,346800.0,5
+436,34,Adviser Two,346800.0,5
+437,34,Adviser Two,346800.0,5
+438,34,Adviser Two,346800.0,5
+439,34,Adviser Two,346800.0,5
+440,34,Adviser Two,346800.0,5
+441,34,Adviser Three,346800.0,5
+442,34,Adviser Three,346800.0,5
+443,34,Adviser Three,346800.0,5
+444,34,Adviser Three,346800.0,5
+445,34,Adviser Three,346800.0,5
+446,34,Adviser Three,346800.0,5
+447,34,Adviser Three,346800.0,5
+448,34,Adviser Three,346800.0,5
+449,34,Adviser Three,346800.0,5
+451,35,Adviser One,357000.0,5
+452,35,Adviser One,357000.0,5
+453,35,Adviser One,357000.0,5
+454,35,Adviser One,357000.0,5
+455,35,Adviser One,357000.0,5
+456,35,Adviser One,357000.0,5
+457,35,Adviser One,357000.0,5
+458,35,Adviser One,357000.0,5
+459,35,Adviser One,357000.0,5
+460,35,Adviser One,357000.0,5
+461,35,Adviser Two,357000.0,5
+463,35,Adviser Two,357000.0,5
+464,35,Adviser Two,357000.0,5
+465,35,Adviser Two,357000.0,5
+466,35,Adviser Two,357000.0,5
+467,35,Adviser Two,357000.0,5
+468,35,Adviser Two,357000.0,5
+469,35,Adviser Two,357000.0,5
+470,35,Adviser Two,357000.0,5
+471,35,Adviser Three,357000.0,5
+472,35,Adviser Three,357000.0,5
+473,35,Adviser Three,357000.0,5
+474,35,Adviser Three,357000.0,5
+475,35,Adviser Three,357000.0,5
+476,35,Adviser Three,357000.0,5
+477,35,Adviser Three,357000.0,5
+478,35,Adviser Three,357000.0,5
+479,35,Adviser Three,357000.0,5
+480,35,Adviser Three,357000.0,5
+481,36,Adviser One,367200.0,5
+482,36,Adviser One,367200.0,5
+483,36,Adviser One,367200.0,5
+484,36,Adviser One,367200.0,5
+485,36,Adviser One,367200.0,5
+486,36,Adviser One,367200.0,5
+487,36,Adviser One,367200.0,5
+488,36,Adviser One,367200.0,5
+489,36,Adviser One,367200.0,5
+490,36,Adviser One,367200.0,5
+491,36,Adviser Two,367200.0,5
+492,36,Adviser Two,367200.0,5
+493,36,Adviser Two,367200.0,5
+494,36,Adviser Two,367200.0,5
+495,36,Adviser Two,367200.0,5
+496,36,Adviser Two,367200.0,5
+497,36,Adviser Two,367200.0,5
+498,36,Adviser Two,367200.0,5
+499,36,Adviser Two,367200.0,5
+500,36,Adviser Two,367200.0,5
+501,36,Adviser Three,367200.0,5
+502,36,Adviser Three,367200.0,5
+503,36,Adviser Three,367200.0,5
+504,36,Adviser Three,367200.0,5
+505,36,Adviser Three,367200.0,5
+506,36,Adviser Three,367200.0,5
+507,36,Adviser Three,367200.0,5
+508,36,Adviser Three,367200.0,5
+509,36,Adviser Three,367200.0,5
+510,36,Adviser Three,367200.0,5
+511,37,Adviser One,377400.0,5
+512,37,Adviser One,377400.0,5
+513,37,Adviser One,377400.0,5
+514,37,Adviser One,377400.0,5
+515,37,Adviser One,377400.0,5
+516,37,Adviser One,377400.0,5
+517,37,Adviser One,377400.0,5
+518,37,Adviser One,377400.0,5
+519,37,Adviser One,377400.0,5
+520,37,Adviser One,377400.0,5
+521,37,Adviser Two,377400.0,5
+522,37,Adviser Two,377400.0,5
+523,37,Adviser Two,377400.0,5
+524,37,Adviser Two,377400.0,5
+525,37,Adviser Two,377400.0,5
+526,37,Adviser Two,377400.0,5
+527,37,Adviser Two,377400.0,5
+528,37,Adviser Two,377400.0,5
+529,37,Adviser Two,377400.0,5
+530,37,Adviser Two,377400.0,5
+531,37,Adviser Three,377400.0,5
+532,37,Adviser Three,377400.0,5
+533,37,Adviser Three,377400.0,5
+534,37,Adviser Three,377400.0,5
+535,37,Adviser Three,377400.0,5
+536,37,Adviser Three,377400.0,5
+537,37,Adviser Three,377400.0,5
+538,37,Adviser Three,377400.0,5
+539,37,Adviser Three,377400.0,5
+540,37,Adviser Three,377400.0,5
+541,38,Adviser One,387600.0,5
+542,38,Adviser One,387600.0,5
+543,38,Adviser One,387600.0,5
+544,38,Adviser One,387600.0,5
+545,38,Adviser One,387600.0,5
+546,38,Adviser One,387600.0,5
+547,38,Adviser One,387600.0,5
+548,38,Adviser One,387600.0,5
+549,38,Adviser One,387600.0,5
+550,38,Adviser One,387600.0,5
+552,38,Adviser Two,387600.0,5
+553,38,Adviser Two,387600.0,5
+554,38,Adviser Two,387600.0,5
+555,38,Adviser Two,387600.0,5
+557,38,Adviser Two,387600.0,5
+558,38,Adviser Two,387600.0,5
+559,38,Adviser Two,387600.0,5
+560,38,Adviser Two,387600.0,5
+561,38,Adviser Three,387600.0,5
+562,38,Adviser Three,387600.0,5
+563,38,Adviser Three,387600.0,5
+564,38,Adviser Three,387600.0,5
+565,38,Adviser Three,387600.0,5
+566,38,Adviser Three,387600.0,5
+567,38,Adviser Three,387600.0,5
+568,38,Adviser Three,387600.0,5
+569,38,Adviser Three,387600.0,5
+570,38,Adviser Three,387600.0,5
+571,39,Adviser One,397800.0,5
+572,39,Adviser One,397800.0,5
+573,39,Adviser One,397800.0,5
+574,39,Adviser One,397800.0,5
+575,39,Adviser One,397800.0,5
+576,39,Adviser One,397800.0,5
+577,39,Adviser One,397800.0,5
+578,39,Adviser One,397800.0,5
+579,39,Adviser One,397800.0,5
+580,39,Adviser One,397800.0,5
+581,39,Adviser Two,397800.0,5
+582,39,Adviser Two,397800.0,5
+583,39,Adviser Two,397800.0,5
+584,39,Adviser Two,397800.0,5
+585,39,Adviser Two,397800.0,5
+586,39,Adviser Two,397800.0,5
+587,39,Adviser Two,397800.0,5
+588,39,Adviser Two,397800.0,5
+589,39,Adviser Two,397800.0,5
+590,39,Adviser Two,397800.0,5
+591,39,Adviser Three,397800.0,5
+593,39,Adviser Three,397800.0,5
+594,39,Adviser Three,397800.0,5
+595,39,Adviser Three,397800.0,5
+596,39,Adviser Three,397800.0,5
+597,39,Adviser Three,397800.0,5
+598,39,Adviser Three,397800.0,5
+599,39,Adviser Three,397800.0,5
+600,39,Adviser Three,397800.0,5
+602,40,Adviser One,408000.0,5
+603,40,Adviser One,408000.0,5
+604,40,Adviser One,408000.0,5
+605,40,Adviser One,408000.0,5
+606,40,Adviser One,408000.0,5
+607,40,Adviser One,408000.0,5
+609,40,Adviser One,408000.0,5
+610,40,Adviser One,408000.0,5
+611,40,Adviser Two,408000.0,5
+612,40,Adviser Two,408000.0,5
+613,40,Adviser Two,408000.0,5
+614,40,Adviser Two,408000.0,5
+615,40,Adviser Two,408000.0,5
+616,40,Adviser Two,408000.0,5
+617,40,Adviser Two,408000.0,5
+618,40,Adviser Two,408000.0,5
+620,40,Adviser Two,408000.0,5
+621,40,Adviser Three,408000.0,5
+622,40,Adviser Three,408000.0,5
+623,40,Adviser Three,408000.0,5
+624,40,Adviser Three,408000.0,5
+625,40,Adviser Three,408000.0,5
+626,40,Adviser Three,408000.0,5
+627,40,Adviser Three,408000.0,5
+628,40,Adviser Three,408000.0,5
+629,40,Adviser Three,408000.0,5
+630,40,Adviser Three,408000.0,5
+631,41,Adviser One,418200.0,5
+632,41,Adviser One,418200.0,5
+633,41,Adviser One,418200.0,5
+634,41,Adviser One,418200.0,5
+635,41,Adviser One,418200.0,5
+636,41,Adviser One,418200.0,5
+637,41,Adviser One,418200.0,5
+638,41,Adviser One,418200.0,5
+639,41,Adviser One,418200.0,5
+640,41,Adviser One,418200.0,5
+641,41,Adviser Two,418200.0,5
+642,41,Adviser Two,418200.0,5
+643,41,Adviser Two,418200.0,5
+644,41,Adviser Two,418200.0,5
+645,41,Adviser Two,418200.0,5
+646,41,Adviser Two,418200.0,5
+647,41,Adviser Two,418200.0,5
+648,41,Adviser Two,418200.0,5
+649,41,Adviser Two,418200.0,5
+650,41,Adviser Two,418200.0,5
+651,41,Adviser Three,418200.0,5
+652,41,Adviser Three,418200.0,5
+653,41,Adviser Three,418200.0,5
+654,41,Adviser Three,418200.0,5
+655,41,Adviser Three,418200.0,5
+656,41,Adviser Three,418200.0,5
+657,41,Adviser Three,418200.0,5
+658,41,Adviser Three,418200.0,5
+659,41,Adviser Three,418200.0,5
+660,41,Adviser Three,418200.0,5
+661,42,Adviser One,428400.0,5
+662,42,Adviser One,428400.0,5
+663,42,Adviser One,428400.0,5
+664,42,Adviser One,428400.0,5
+665,42,Adviser One,428400.0,5
+666,42,Adviser One,428400.0,5
+667,42,Adviser One,428400.0,5
+668,42,Adviser One,428400.0,5
+669,42,Adviser One,428400.0,5
+670,42,Adviser One,428400.0,5
+672,42,Adviser Two,428400.0,5
+673,42,Adviser Two,428400.0,5
+674,42,Adviser Two,428400.0,5
+675,42,Adviser Two,428400.0,5
+676,42,Adviser Two,428400.0,5
+677,42,Adviser Two,428400.0,5
+678,42,Adviser Two,428400.0,5
+679,42,Adviser Two,428400.0,5
+680,42,Adviser Two,428400.0,5
+681,42,Adviser Three,428400.0,5
+682,42,Adviser Three,428400.0,5
+683,42,Adviser Three,428400.0,5
+684,42,Adviser Three,428400.0,5
+685,42,Adviser Three,428400.0,5
+686,42,Adviser Three,428400.0,5
+687,42,Adviser Three,428400.0,5
+688,42,Adviser Three,428400.0,5
+689,42,Adviser Three,428400.0,5
+690,42,Adviser Three,428400.0,5
+691,43,Adviser One,438600.0,5
+692,43,Adviser One,438600.0,5
+693,43,Adviser One,438600.0,5
+694,43,Adviser One,438600.0,5
+695,43,Adviser One,438600.0,5
+696,43,Adviser One,438600.0,5
+697,43,Adviser One,438600.0,5
+698,43,Adviser One,438600.0,5
+699,43,Adviser One,438600.0,5
+700,43,Adviser One,438600.0,5
+701,43,Adviser Two,438600.0,5
+702,43,Adviser Two,438600.0,5
+703,43,Adviser Two,438600.0,5
+704,43,Adviser Two,438600.0,5
+705,43,Adviser Two,438600.0,5
+706,43,Adviser Two,438600.0,5
+707,43,Adviser Two,438600.0,5
+708,43,Adviser Two,438600.0,5
+709,43,Adviser Two,438600.0,5
+710,43,Adviser Two,438600.0,5
+711,43,Adviser Three,438600.0,5
+712,43,Adviser Three,438600.0,5
+713,43,Adviser Three,438600.0,5
+714,43,Adviser Three,438600.0,5
+715,43,Adviser Three,438600.0,5
+716,43,Adviser Three,438600.0,5
+717,43,Adviser Three,438600.0,5
+718,43,Adviser Three,438600.0,5
+719,43,Adviser Three,438600.0,5
+720,43,Adviser Three,438600.0,5
+721,44,Adviser One,448800.0,5
+722,44,Adviser One,448800.0,5
+723,44,Adviser One,448800.0,5
+724,44,Adviser One,448800.0,5
+725,44,Adviser One,448800.0,5
+726,44,Adviser One,448800.0,5
+727,44,Adviser One,448800.0,5
+728,44,Adviser One,448800.0,5
+729,44,Adviser One,448800.0,5
+730,44,Adviser One,448800.0,5
+731,44,Adviser Two,448800.0,5
+732,44,Adviser Two,448800.0,5
+733,44,Adviser Two,448800.0,5
+734,44,Adviser Two,448800.0,5
+735,44,Adviser Two,448800.0,5
+736,44,Adviser Two,448800.0,5
+737,44,Adviser Two,448800.0,5
+738,44,Adviser Two,448800.0,5
+739,44,Adviser Two,448800.0,5
+740,44,Adviser Two,448800.0,5
+741,44,Adviser Three,448800.0,5
+742,44,Adviser Three,448800.0,5
+743,44,Adviser Three,448800.0,5
+744,44,Adviser Three,448800.0,5
+745,44,Adviser Three,448800.0,5
+746,44,Adviser Three,448800.0,5
+747,44,Adviser Three,448800.0,5
+748,44,Adviser Three,448800.0,5
+749,44,Adviser Three,448800.0,5
+750,44,Adviser Three,448800.0,5
+751,45,Adviser One,459000.0,5
+752,45,Adviser One,459000.0,5
+753,45,Adviser One,459000.0,5
+754,45,Adviser One,459000.0,5
+755,45,Adviser One,459000.0,5
+756,45,Adviser One,459000.0,5
+757,45,Adviser One,459000.0,5
+758,45,Adviser One,459000.0,5
+759,45,Adviser One,459000.0,5
+761,45,Adviser Two,459000.0,5
+762,45,Adviser Two,459000.0,5
+763,45,Adviser Two,459000.0,5
+764,45,Adviser Two,459000.0,5
+765,45,Adviser Two,459000.0,5
+766,45,Adviser Two,459000.0,5
+767,45,Adviser Two,459000.0,5
+768,45,Adviser Two,459000.0,5
+769,45,Adviser Two,459000.0,5
+770,45,Adviser Two,459000.0,5
+771,45,Adviser Three,459000.0,5
+772,45,Adviser Three,459000.0,5
+773,45,Adviser Three,459000.0,5
+774,45,Adviser Three,459000.0,5
+775,45,Adviser Three,459000.0,5
+776,45,Adviser Three,459000.0,5
+777,45,Adviser Three,459000.0,5
+778,45,Adviser Three,459000.0,5
+780,45,Adviser Three,459000.0,5
+781,46,Adviser One,469200.0,5
+782,46,Adviser One,469200.0,5
+783,46,Adviser One,469200.0,5
+784,46,Adviser One,469200.0,5
+785,46,Adviser One,469200.0,5
+786,46,Adviser One,469200.0,5
+787,46,Adviser One,469200.0,5
+788,46,Adviser One,469200.0,5
+789,46,Adviser One,469200.0,5
+790,46,Adviser One,469200.0,5
+791,46,Adviser Two,469200.0,5
+792,46,Adviser Two,469200.0,5
+793,46,Adviser Two,469200.0,5
+794,46,Adviser Two,469200.0,5
+795,46,Adviser Two,469200.0,5
+796,46,Adviser Two,469200.0,5
+797,46,Adviser Two,469200.0,5
+798,46,Adviser Two,469200.0,5
+799,46,Adviser Two,469200.0,5
+800,46,Adviser Two,469200.0,5
+801,46,Adviser Three,469200.0,5
+802,46,Adviser Three,469200.0,5
+803,46,Adviser Three,469200.0,5
+804,46,Adviser Three,469200.0,5
+805,46,Adviser Three,469200.0,5
+806,46,Adviser Three,469200.0,5
+807,46,Adviser Three,469200.0,5
+808,46,Adviser Three,469200.0,5
+809,46,Adviser Three,469200.0,5
+810,46,Adviser Three,469200.0,5
+811,47,Adviser One,479400.0,5
+812,47,Adviser One,479400.0,5
+813,47,Adviser One,479400.0,5
+814,47,Adviser One,479400.0,5
+815,47,Adviser One,479400.0,5
+816,47,Adviser One,479400.0,5
+817,47,Adviser One,479400.0,5
+818,47,Adviser One,479400.0,5
+819,47,Adviser One,479400.0,5
+820,47,Adviser One,479400.0,5
+821,47,Adviser Two,479400.0,5
+823,47,Adviser Two,479400.0,5
+824,47,Adviser Two,479400.0,5
+825,47,Adviser Two,479400.0,5
+826,47,Adviser Two,479400.0,5
+827,47,Adviser Two,479400.0,5
+828,47,Adviser Two,479400.0,5
+829,47,Adviser Two,479400.0,5
+830,47,Adviser Two,479400.0,5
+831,47,Adviser Three,479400.0,5
+832,47,Adviser Three,479400.0,5
+833,47,Adviser Three,479400.0,5
+834,47,Adviser Three,479400.0,5
+835,47,Adviser Three,479400.0,5
+836,47,Adviser Three,479400.0,5
+837,47,Adviser Three,479400.0,5
+838,47,Adviser Three,479400.0,5
+839,47,Adviser Three,479400.0,5
+840,47,Adviser Three,479400.0,5
+841,48,Adviser One,489600.0,5
+842,48,Adviser One,489600.0,5
+843,48,Adviser One,489600.0,5
+844,48,Adviser One,489600.0,5
+845,48,Adviser One,489600.0,5
+846,48,Adviser One,489600.0,5
+847,48,Adviser One,489600.0,5
+848,48,Adviser One,489600.0,5
+849,48,Adviser One,489600.0,5
+850,48,Adviser One,489600.0,5
+851,48,Adviser Two,489600.0,5
+852,48,Adviser Two,489600.0,5
+853,48,Adviser Two,489600.0,5
+854,48,Adviser Two,489600.0,5
+855,48,Adviser Two,489600.0,5
+856,48,Adviser Two,489600.0,5
+857,48,Adviser Two,489600.0,5
+858,48,Adviser Two,489600.0,5
+859,48,Adviser Two,489600.0,5
+860,48,Adviser Two,489600.0,5
+861,48,Adviser Three,489600.0,5
+862,48,Adviser Three,489600.0,5
+863,48,Adviser Three,489600.0,5
+864,48,Adviser Three,489600.0,5
+865,48,Adviser Three,489600.0,5
+866,48,Adviser Three,489600.0,5
+867,48,Adviser Three,489600.0,5
+868,48,Adviser Three,489600.0,5
+869,48,Adviser Three,489600.0,5
+870,48,Adviser Three,489600.0,5
+871,49,Adviser One,499800.0,5
+875,49,Adviser One,499800.0,5
+876,49,Adviser One,499800.0,5
+877,49,Adviser One,499800.0,5
+878,49,Adviser One,499800.0,5
+879,49,Adviser One,499800.0,5
+880,49,Adviser One,499800.0,5
+881,49,Adviser Two,499800.0,5
+882,49,Adviser Two,499800.0,5
+883,49,Adviser Two,499800.0,5
+884,49,Adviser Two,499800.0,5
+885,49,Adviser Two,499800.0,5
+886,49,Adviser Two,499800.0,5
+887,49,Adviser Two,499800.0,5
+888,49,Adviser Two,499800.0,5
+889,49,Adviser Two,499800.0,5
+890,49,Adviser Two,499800.0,5
+891,49,Adviser Three,499800.0,5
+892,49,Adviser Three,499800.0,5
+893,49,Adviser Three,499800.0,5
+894,49,Adviser Three,499800.0,5
+895,49,Adviser Three,499800.0,5
+896,49,Adviser Three,499800.0,5
+897,49,Adviser Three,499800.0,5
+898,49,Adviser Three,499800.0,5
+899,49,Adviser Three,499800.0,5
+901,50,Adviser One,510000.0,5
+903,50,Adviser One,510000.0,5
+904,50,Adviser One,510000.0,5
+905,50,Adviser One,510000.0,5
+906,50,Adviser One,510000.0,5
+907,50,Adviser One,510000.0,5
+908,50,Adviser One,510000.0,5
+909,50,Adviser One,510000.0,5
+910,50,Adviser One,510000.0,5
+911,50,Adviser Two,510000.0,5
+912,50,Adviser Two,510000.0,5
+913,50,Adviser Two,510000.0,5
+914,50,Adviser Two,510000.0,5
+915,50,Adviser Two,510000.0,5
+916,50,Adviser Two,510000.0,5
+917,50,Adviser Two,510000.0,5
+918,50,Adviser Two,510000.0,5
+919,50,Adviser Two,510000.0,5
+920,50,Adviser Two,510000.0,5
+921,50,Adviser Three,510000.0,5
+922,50,Adviser Three,510000.0,5
+923,50,Adviser Three,510000.0,5
+924,50,Adviser Three,510000.0,5
+925,50,Adviser Three,510000.0,5
+926,50,Adviser Three,510000.0,5
+927,50,Adviser Three,510000.0,5
+928,50,Adviser Three,510000.0,5
+930,50,Adviser Three,510000.0,5
+931,51,Adviser One,520200.0,5
+932,51,Adviser One,520200.0,5
+933,51,Adviser One,520200.0,5
+934,51,Adviser One,520200.0,5
+935,51,Adviser One,520200.0,5
+936,51,Adviser One,520200.0,5
+937,51,Adviser One,520200.0,5
+939,51,Adviser One,520200.0,5
+940,51,Adviser One,520200.0,5
+941,51,Adviser Two,520200.0,5
+942,51,Adviser Two,520200.0,5
+943,51,Adviser Two,520200.0,5
+944,51,Adviser Two,520200.0,5
+946,51,Adviser Two,520200.0,5
+947,51,Adviser Two,520200.0,5
+948,51,Adviser Two,520200.0,5
+949,51,Adviser Two,520200.0,5
+950,51,Adviser Two,520200.0,5
+951,51,Adviser Three,520200.0,5
+952,51,Adviser Three,520200.0,5
+953,51,Adviser Three,520200.0,5
+954,51,Adviser Three,520200.0,5
+955,51,Adviser Three,520200.0,5
+956,51,Adviser Three,520200.0,5
+957,51,Adviser Three,520200.0,5
+958,51,Adviser Three,520200.0,5
+959,51,Adviser Three,520200.0,5
+960,51,Adviser Three,520200.0,5
+961,52,Adviser One,530400.0,5
+962,52,Adviser One,530400.0,5
+963,52,Adviser One,530400.0,5
+964,52,Adviser One,530400.0,5
+965,52,Adviser One,530400.0,5
+966,52,Adviser One,530400.0,5
+967,52,Adviser One,530400.0,5
+968,52,Adviser One,530400.0,5
+969,52,Adviser One,530400.0,5
+970,52,Adviser One,530400.0,5
+971,52,Adviser Two,530400.0,5
+972,52,Adviser Two,530400.0,5
+973,52,Adviser Two,530400.0,5
+974,52,Adviser Two,530400.0,5
+975,52,Adviser Two,530400.0,5
+976,52,Adviser Two,530400.0,5
+977,52,Adviser Two,530400.0,5
+979,52,Adviser Two,530400.0,5
+980,52,Adviser Two,530400.0,5
+981,52,Adviser Three,530400.0,5
+983,52,Adviser Three,530400.0,5
+984,52,Adviser Three,530400.0,5
+985,52,Adviser Three,530400.0,5
+986,52,Adviser Three,530400.0,5
+987,52,Adviser Three,530400.0,5
+988,52,Adviser Three,530400.0,5
+989,52,Adviser Three,530400.0,5
+990,52,Adviser Three,530400.0,5
+991,53,Adviser One,540600.0,5
+992,53,Adviser One,540600.0,5
+993,53,Adviser One,540600.0,5
+994,53,Adviser One,540600.0,5
+995,53,Adviser One,540600.0,5
+996,53,Adviser One,540600.0,5
+997,53,Adviser One,540600.0,5
+998,53,Adviser One,540600.0,5
+999,53,Adviser One,540600.0,5
+1000,53,Adviser One,540600.0,5
+1001,53,Adviser Two,540600.0,5
+1002,53,Adviser Two,540600.0,5
+1003,53,Adviser Two,540600.0,5
+1004,53,Adviser Two,540600.0,5
+1005,53,Adviser Two,540600.0,5
+1006,53,Adviser Two,540600.0,5
+1007,53,Adviser Two,540600.0,5
+1008,53,Adviser Two,540600.0,5
+1009,53,Adviser Two,540600.0,5
+1010,53,Adviser Two,540600.0,5
+1011,53,Adviser Three,540600.0,5
+1012,53,Adviser Three,540600.0,5
+1013,53,Adviser Three,540600.0,5
+1014,53,Adviser Three,540600.0,5
+1015,53,Adviser Three,540600.0,5
+1016,53,Adviser Three,540600.0,5
+1017,53,Adviser Three,540600.0,5
+1018,53,Adviser Three,540600.0,5
+1019,53,Adviser Three,540600.0,5
+1020,53,Adviser Three,540600.0,5
+1021,54,Adviser One,550800.0,5
+1022,54,Adviser One,550800.0,5
+1023,54,Adviser One,550800.0,5
+1024,54,Adviser One,550800.0,5
+1025,54,Adviser One,550800.0,5
+1026,54,Adviser One,550800.0,5
+1027,54,Adviser One,550800.0,5
+1028,54,Adviser One,550800.0,5
+1029,54,Adviser One,550800.0,5
+1031,54,Adviser Two,550800.0,5
+1032,54,Adviser Two,550800.0,5
+1033,54,Adviser Two,550800.0,5
+1034,54,Adviser Two,550800.0,5
+1035,54,Adviser Two,550800.0,5
+1036,54,Adviser Two,550800.0,5
+1037,54,Adviser Two,550800.0,5
+1038,54,Adviser Two,550800.0,5
+1039,54,Adviser Two,550800.0,5
+1040,54,Adviser Two,550800.0,5
+1042,54,Adviser Three,550800.0,5
+1043,54,Adviser Three,550800.0,5
+1044,54,Adviser Three,550800.0,5
+1045,54,Adviser Three,550800.0,5
+1046,54,Adviser Three,550800.0,5
+1048,54,Adviser Three,550800.0,5
+1049,54,Adviser Three,550800.0,5
+1050,54,Adviser Three,550800.0,5
+1051,55,Adviser One,561000.0,5
+1052,55,Adviser One,561000.0,5
+1053,55,Adviser One,561000.0,5
+1054,55,Adviser One,561000.0,5
+1055,55,Adviser One,561000.0,5
+1056,55,Adviser One,561000.0,5
+1057,55,Adviser One,561000.0,5
+1058,55,Adviser One,561000.0,5
+1059,55,Adviser One,561000.0,5
+1060,55,Adviser One,561000.0,5
+1061,55,Adviser Two,561000.0,5
+1062,55,Adviser Two,561000.0,5
+1063,55,Adviser Two,561000.0,5
+1064,55,Adviser Two,561000.0,5
+1065,55,Adviser Two,561000.0,5
+1066,55,Adviser Two,561000.0,5
+1067,55,Adviser Two,561000.0,5
+1068,55,Adviser Two,561000.0,5
+1069,55,Adviser Two,561000.0,5
+1070,55,Adviser Two,561000.0,5
+1071,55,Adviser Three,561000.0,5
+1072,55,Adviser Three,561000.0,5
+1073,55,Adviser Three,561000.0,5
+1074,55,Adviser Three,561000.0,5
+1075,55,Adviser Three,561000.0,5
+1076,55,Adviser Three,561000.0,5
+1077,55,Adviser Three,561000.0,5
+1078,55,Adviser Three,561000.0,5
+1079,55,Adviser Three,561000.0,5
+1080,55,Adviser Three,561000.0,5
+1081,56,Adviser One,571200.0,5
+1082,56,Adviser One,571200.0,5
+1083,56,Adviser One,571200.0,5
+1084,56,Adviser One,571200.0,5
+1085,56,Adviser One,571200.0,5
+1086,56,Adviser One,571200.0,5
+1087,56,Adviser One,571200.0,5
+1088,56,Adviser One,571200.0,5
+1089,56,Adviser One,571200.0,5
+1090,56,Adviser One,571200.0,5
+1092,56,Adviser Two,571200.0,5
+1093,56,Adviser Two,571200.0,5
+1094,56,Adviser Two,571200.0,5
+1095,56,Adviser Two,571200.0,5
+1096,56,Adviser Two,571200.0,5
+1097,56,Adviser Two,571200.0,5
+1098,56,Adviser Two,571200.0,5
+1099,56,Adviser Two,571200.0,5
+1100,56,Adviser Two,571200.0,5
+1101,56,Adviser Three,571200.0,5
+1102,56,Adviser Three,571200.0,5
+1103,56,Adviser Three,571200.0,5
+1104,56,Adviser Three,571200.0,5
+1105,56,Adviser Three,571200.0,5
+1106,56,Adviser Three,571200.0,5
+1107,56,Adviser Three,571200.0,5
+1108,56,Adviser Three,571200.0,5
+1109,56,Adviser Three,571200.0,5
+1110,56,Adviser Three,571200.0,5
+1111,57,Adviser One,581400.0,5
+1112,57,Adviser One,581400.0,5
+1113,57,Adviser One,581400.0,5
+1114,57,Adviser One,581400.0,5
+1115,57,Adviser One,581400.0,5
+1117,57,Adviser One,581400.0,5
+1118,57,Adviser One,581400.0,5
+1120,57,Adviser One,581400.0,5
+1121,57,Adviser Two,581400.0,5
+1122,57,Adviser Two,581400.0,5
+1123,57,Adviser Two,581400.0,5
+1124,57,Adviser Two,581400.0,5
+1125,57,Adviser Two,581400.0,5
+1126,57,Adviser Two,581400.0,5
+1127,57,Adviser Two,581400.0,5
+1128,57,Adviser Two,581400.0,5
+1129,57,Adviser Two,581400.0,5
+1130,57,Adviser Two,581400.0,5
+1131,57,Adviser Three,581400.0,5
+1132,57,Adviser Three,581400.0,5
+1133,57,Adviser Three,581400.0,5
+1134,57,Adviser Three,581400.0,5
+1135,57,Adviser Three,581400.0,5
+1136,57,Adviser Three,581400.0,5
+1137,57,Adviser Three,581400.0,5
+1138,57,Adviser Three,581400.0,5
+1139,57,Adviser Three,581400.0,5
+1140,57,Adviser Three,581400.0,5
+1141,58,Adviser One,591600.0,5
+1142,58,Adviser One,591600.0,5
+1143,58,Adviser One,591600.0,5
+1145,58,Adviser One,591600.0,5
+1146,58,Adviser One,591600.0,5
+1147,58,Adviser One,591600.0,5
+1148,58,Adviser One,591600.0,5
+1149,58,Adviser One,591600.0,5
+1150,58,Adviser One,591600.0,5
+1152,58,Adviser Two,591600.0,5
+1153,58,Adviser Two,591600.0,5
+1154,58,Adviser Two,591600.0,5
+1155,58,Adviser Two,591600.0,5
+1156,58,Adviser Two,591600.0,5
+1157,58,Adviser Two,591600.0,5
+1158,58,Adviser Two,591600.0,5
+1159,58,Adviser Two,591600.0,5
+1160,58,Adviser Two,591600.0,5
+1161,58,Adviser Three,591600.0,5
+1162,58,Adviser Three,591600.0,5
+1164,58,Adviser Three,591600.0,5
+1165,58,Adviser Three,591600.0,5
+1166,58,Adviser Three,591600.0,5
+1167,58,Adviser Three,591600.0,5
+1168,58,Adviser Three,591600.0,5
+1169,58,Adviser Three,591600.0,5
+1170,58,Adviser Three,591600.0,5
+1171,59,Adviser One,601800.0,5
+1172,59,Adviser One,601800.0,5
+1173,59,Adviser One,601800.0,5
+1174,59,Adviser One,601800.0,5
+1175,59,Adviser One,601800.0,5
+1176,59,Adviser One,601800.0,5
+1177,59,Adviser One,601800.0,5
+1178,59,Adviser One,601800.0,5
+1179,59,Adviser One,601800.0,5
+1181,59,Adviser Two,601800.0,5
+1182,59,Adviser Two,601800.0,5
+1183,59,Adviser Two,601800.0,5
+1184,59,Adviser Two,601800.0,5
+1185,59,Adviser Two,601800.0,5
+1186,59,Adviser Two,601800.0,5
+1187,59,Adviser Two,601800.0,5
+1188,59,Adviser Two,601800.0,5
+1189,59,Adviser Two,601800.0,5
+1190,59,Adviser Two,601800.0,5
+1191,59,Adviser Three,601800.0,5
+1192,59,Adviser Three,601800.0,5
+1193,59,Adviser Three,601800.0,5
+1194,59,Adviser Three,601800.0,5
+1195,59,Adviser Three,601800.0,5
+1196,59,Adviser Three,601800.0,5
+1197,59,Adviser Three,601800.0,5
+1198,59,Adviser Three,601800.0,5
+1199,59,Adviser Three,601800.0,5
+1200,59,Adviser Three,601800.0,5
+1321,59,Adviser Three,102000.0,0

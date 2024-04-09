@@ -24,12 +24,13 @@ class DNNForm(ModelForm):
 class ProjectionForm(ModelForm):
     class Meta:
         model = Projection
-        fields = ['name', 'start', 'end', 'dnn', ]
+        fields = ['name', 'start', 'end', 'dnn', 'proj_period']
         widgets = {
             'name': TextInput(attrs={'class': 'form-control', }),
             'start': Select(attrs={'class': 'form-control', }),
             'end': Select(attrs={'class': 'form-control', }),
             'dnn': Select(attrs={'class': 'form-control', }),
+            'proj_period': TextInput(attrs={'class': 'form-control', }),
         }
 
 class SettingForm(ModelForm):

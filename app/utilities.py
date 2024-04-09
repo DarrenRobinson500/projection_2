@@ -89,3 +89,9 @@ def month_string(month_number):
         12: 'Dec'
     }
     return months.get(month_number, 'Invalid Month')
+
+def round_to_nearest_multiple(x, base=5):
+    try:
+        return base * round(x / base)
+    except:
+        return 0

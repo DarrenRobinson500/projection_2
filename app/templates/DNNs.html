@@ -1,11 +1,11 @@
 {% extends 'base.html'%}
 {% block content %}
 
-<h3>{{ model_str }}s</h3>
+<h3>{{ model_str | capfirst }}s</h3>
 <table class="table">
     <thead style="background-color: #ffe5ea;">
         <th>Name</th>
-        <th>Projection</th>
+        <th>Period</th>
         <th>Input Table</th>
         <th>Output Table</th>
         <th>Action</th>
@@ -16,10 +16,20 @@
         <td>
             <b>{{ item }} </b>
         </td>
-        <td><a class="btn btn-yak" href="{% url 'item' 'period' item.period.id %}">{{ item.period }}</a></td>
-        <td> {{ item.period.rate_file.df_top_html | safe }} </td>
-        <td> {{ item.assumption_file.df_top_html | safe }} </td>
-        <td><a class="btn btn-yak" href="{% url 'item' model_str item.id %}">View</a></td>
+        <td>
+            {% if item.period %}
+                <a class="btn btn-yak" href="{% url 'item' 'period' item.period.id %}">{{ item.period }}</a>
+            {% endif %}
+        </td>
+        <td> {{ item.period.encoded_rate_file.df_top_html | safe }} </td>
+        <td> {{ item.assumption_file.df_top_html | safe }}
+             {% for file in item.files %}{% if file %}<a href="{% url 'item' 'file' file.id %}">{{ file }}</a><br>{% endif %}{% endfor %}
+        </td>
+        <td>
+            <a class="btn btn-yak" href="{% url 'item' model_str item.id %}">View</a>
+            <a class="btn btn-yak" href="{% url 'run' model_str item.id %}">Run</a>
+            <a class="btn btn-yak" href="{% url 'delete' model_str item.id %}">Delete</a>
+        </td>
     </tr>
     {% endfor %}
 </table>

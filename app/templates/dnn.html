@@ -3,13 +3,16 @@
 
 <h3>{{ model_str | capfirst }}: {{ item.name }}</h3>
 <a href="{% url 'list' model_str %}">All {{ model_str }}s</a><br>
-Model: {{ item.model }}. <br>Epochs: {{ item.epochs }}<br>
+Model: {{ item.model }}<br>Epochs: {{ item.epochs }}<br>
 <a class="btn btn-yak" href="{% url 'run' model_str item.id %}">Run {{ model_str | capfirst}}</a>
+{% if item.model %}
+    <a class="btn btn-yak" href="{% url 'create_table' model_str item.id %}">Create assumption table</a>
+{% endif %}
 <a class="btn btn-yak" href="{% url 'edit' model_str item.id %}">Edit {{ model_str | capfirst }}</a><br><br>
 
 <div class="row">
     <div class="col-sm-6">
-        <h3>Rate Table</h3>
+        <h3>Actual Experience</h3>
         {{ item.plot_in | safe }}
         {{ item.period.rate_file.df_html | safe }}
     </div>

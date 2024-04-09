@@ -5,8 +5,8 @@
 <table class="table">
     <thead style="background-color: #ffe5ea;">
         <th>Name</th>
-        <th>Start</th>
-        <th>End</th>
+        <th>Data</th>
+        <th>Files</th>
         <th>Ausumptions</th>
         <th>Action</th>
     </thead>
@@ -16,11 +16,19 @@
         <td>
             <b>{{ item }} </b>
         </td>
-        <td>{% if item.start %}<a class="btn btn-yak" href="{% url 'item' 'data' item.start.id %}">{{ item.start }}</a>{% endif %}</td>
-        <td>{% if item.end %}<a class="btn btn-yak" href="{% url 'item' 'data' item.end.id %}">{{ item.end }}</a>{% endif %}</td>
+        <td>
+            {% if item.start %}<a class="btn btn-yak" href="{% url 'item' 'data' item.start.id %}">{{ item.start }}</a>{% endif %}
+            {% if item.end %}<a class="btn btn-yak" href="{% url 'item' 'data' item.end.id %}">{{ item.end }}</a>{% endif %}
+        </td>
+        <td>
+            {% for file in item.files %}
+                <a href="{% url 'item' 'file' file.id %}">{{ file }}</a><br>
+            {% endfor %}
+        </td>
         <td> {{ item.dnn.assumption_file.df_top_html | safe }} </td>
         <td>
             <a class="btn btn-yak" href="{% url 'item' model_str item.id %}">View</a>
+            <a class="btn btn-yak" href="{% url 'run' model_str item.id %}">Run</a>
             <a class="btn btn-yak" href="{% url 'delete' model_str item.id %}">Delete</a>
         </td>
     </tr>

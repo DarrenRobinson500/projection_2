@@ -4,9 +4,19 @@
 <h3>Period File: {{ item.name }}</h3>
 <a href="{% url 'list' model_str %}">All {{ model_str | capfirst }}s</a><br>
 
-Shape: {{ item.file.df.shape }}
-<h3>Rates</h3>
-{{ item.rate_file.df_html | safe }}
+Shape: {{ item.file.df.shape }}<br>
+<a class="btn btn-yak" href="{% url 'create_files' model_str item.id %}">Create Files</a>
+
+<div class="row">
+    <div class="col-sm-4">
+        <h3>Rates</h3>
+        {{ item.rate_file.df_html | safe }}
+    </div>
+    <div class="col-sm-8">
+        <h3>Encoded Rates</h3>
+        {{ item.encoded_rate_file.df_html | safe }}
+    </div>
+</div>
 <h3>Raw Data</h3>
 {{ item.file.df_html | safe }}
 

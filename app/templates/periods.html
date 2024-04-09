@@ -6,33 +6,32 @@
     <thead style="background-color: #ffe5ea;">
         <th>Name</th>
         <th>Period</th>
-        <th>Joins</th>
-        <th>Data</th>
-        <th>Action</th>
+        <th>Ouput</th>
+        <th>Actions</th>
     </thead>
 
     {% for item in items %}
     <tr>
         <td>
             <b>{{ item.name }} </b><br>
-            {% if item.df %}
+            {% if item.df is not None %}
             {{ item.df.shape }}
             {% endif %}
         </td>
-        <td>{{ item.start_date }} to {{ item.end_date }}</td>
-        <td>
-            {% for data in item.joins %}
-                <a class="btn btn-yak" href="{% url 'item' 'data' data.id %}">{{ data }}</a> {{ data.file.df.shape }}<br>
+        <td>{{ item.start_date }} to {{ item.end_date }}<br>
+            {% for join in item.joins %}
+                <a class="btn btn-yak" href="{% url 'item' 'join' join.id %}">{{ join }}</a><br> {{ join.file.df.shape }}<br>
             {% endfor %}
         </td>
         <td>
-            <b>Rates</b>
-            {{ item.rate_file.df_top_html | safe }}
-            <b>Data</b>
+            <b>Data</b> {{ item.file.df.shape }} <a href="{% url 'item' 'file' item.file.id %}">View</a> <a href="{% url 'create_files' 'period' item.id %}">Create File</a>
             {{ item.file.df_top_html | safe }}
+            <b>Rates</b> {% if item.rate_file %}<a href="{% url 'item' 'file' item.rate_file.id %}">View</a><br>{% endif %}
+            {{ item.rate_file.df_top_html | safe }}
+            {% for file in item.files %}{% if file %}<a href="{% url 'item' 'file' file.id %}">{{ file }}</a><br>{% endif %}{% endfor %}
         </td>
         <td>
-            <a class="btn btn-yak" href="{% url 'item' model_str item.id %}">View</a><br>
+            <a class="btn btn-yak" href="{% url 'item' model_str item.id %}">View</a>
             <a class="btn btn-yak" href="{% url 'delete' model_str item.id %}">Delete</a>
         </td>
     </tr>

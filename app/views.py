@@ -1,11 +1,18 @@
 from django.shortcuts import render, redirect
-from app.a1_data import *
-from app.old.a4_projection import *
 from .forms import *
+
+# -----------------------------
+# ----- Generic Functions -----
+# -----------------------------
 
 def home(request):
     # lapse_analyses = LapseAnalysis.objects.all()
-    context = {}
+    all = []
+    for model_str in ["data", "join", "period", "dnn", "projection", "file"]:
+        model, form = get_model(model_str)
+        items = model.objects.all()
+        all.append((model_str, items))
+    context = {"all": all}
     return render(request, "home.html", context)
 
 def list(request, model_str):
@@ -27,8 +34,7 @@ def new(request, model_str):
         form = form(request.POST)
         if form.is_valid():
             new = form.save()
-            if model_str == "period":
-                new.create_file()
+            if model_str == "period": new.create_files()
             return redirect('list', model_str)
     form = form()
     context = {'form':form, 'model_str': model_str, 'mode': 'New'}
@@ -54,14 +60,26 @@ def delete(request, model_str, id):
     if model_str == "file":
         if item.owner():
             item.owner().delete()
-    elif model_str in ["data", "join", "period", "projection",]:
-        if item.file:
-            item.file.delete()
-    if model_str == "data":
-        Join.objects.filter(start=item).delete()
-        Join.objects.filter(end=item).delete()
-    item.delete()
+        else:
+            item.delete()
+    else:
+        if item:
+            item.delete()
     return redirect("list", model_str)
+
+def delete_all(request, model_str):
+    model, form = get_model(model_str)
+    items = model.objects.all()
+    for item in items:
+        if model_str == "file":
+            if item.owner():
+                item.owner().delete()
+            else:
+                item.delete()
+        else:
+            if item:
+                item.delete()
+    return redirect("home")
 
 def file(request, model_str, id):
     model, form = get_model(model_str)
@@ -74,6 +92,22 @@ def run(request, model_str, id):
     item = model.objects.get(id=id)
     item.run()
     return redirect("item", model_str, id)
+
+def create_files(request, model_str, id):
+    model, form = get_model(model_str)
+    item = model.objects.get(id=id)
+    item.create_files()
+    return redirect("item", model_str, id)
+
+def create_table(request, model_str, id):
+    model, form = get_model(model_str)
+    item = model.objects.get(id=id)
+    item.create_table()
+    return redirect("item", model_str, id)
+
+# -----------------------------
+# ----- Specific Functions -----
+# -----------------------------
 
 def data_create(request):
     create_first_data()
@@ -94,4 +128,25 @@ def show(request, projection_id, number, force_recalc=False):
         proj_ind.save()
     proj_ind.run()
     return redirect('item', "proj_ind", proj_ind.id)
+
+def proj_analysis(request, id):
+    item = Projection.objects.get(id=id)
+    df = item.file_db.df()
+    print(df)
+    advisers = df['Adviser'].unique()
+
+    sort_by = request.GET.get('sort_by')
+    if sort_by: df.sort_values(by=sort_by, inplace=True)
+    filter_on = request.GET.get('filter_on')
+    for adviser in advisers: print(type(adviser))
+    print(type(filter_on))
+    print("filter on:", filter_on, advisers, filter_on in advisers)
+    if filter_on and filter_on in advisers: df = df[df['Adviser']==filter_on]
+
+    sort_options = ['Time', 'Age', 'Adviser', ]
+
+    df = df.to_html(classes=['table', 'table-striped', 'table-center'], index=False, justify='center', formatters=formatters, render_links=True,)
+
+    context = {'item': item, 'df': df, 'sort_options': sort_options, 'advisers': advisers}
+    return render(request, "proj_analysis.html", context)
 
