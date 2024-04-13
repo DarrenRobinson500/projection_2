@@ -1,9 +1,17 @@
 {% extends 'base.html'%}
 {% block content %}
 
-<h3>{{ model_str | capfirst }}s</h3>
+<h1>{{ model.name_plural }}</h1>
+<p>{{ model.description }}</p>
+<hr>
+
+{% if dnns|length > 0 %}<b>Apply Values from DNN to all data files: </b>{% endif %}
+{% for dnn in dnns %}
+    <a class="btn btn-yak" href="{% url 'apply_values' model_str dnn.id %}">'{{ dnn | capfirst }}'</a>
+{% endfor %}<br><br>
+
 <table class="table">
-    <thead style="background-color: #ffe5ea;">
+    <thead class="tablehead">
         <th>File</th>
         <th>Data</th>
         <th>Action</th>
@@ -14,7 +22,7 @@
         <td>
             <b>{{ item.file }} </b><br>
             Shape: {{ item.file.df.shape }}<br>
-            URL: {{ item.file.document }}
+            Value Factor: {{ item.value_factor }}
         </td>
         <td> {{ item.file.df_top_html | safe }} </td>
         <td>
@@ -29,5 +37,7 @@
     {% endfor %}
 </table>
 
-<a class="btn btn-yak" href="{% url 'data_create' %}">Create initial {{ model_str }}</a><br><br>
+{% if items|length == 0 %}
+    <a class="btn btn-yak" href="{% url 'data_create' %}">Create initial {{ model_str }}</a><br><br>
+{% endif %}
 {% endblock %}

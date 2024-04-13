@@ -2,8 +2,18 @@
 {% block content %}
 
 <h3>Home</h3>
+<p>The Home screen shows all Data, Joins, Periods and DNNs. The steps involved are:</p>
+<ol>
+    <li>Create the monthly data</li>
+    <li>'Joins' will be created that contain the change in the Data from month to month</li>
+    <li>Group Joins together in Periods, by specifying the calendar date of the start and end of the Period</li>
+    <li>Create and Run a Deep Neural Network (DNN) to identify patterns</li>
+    <li>Use the DNN to value each policy</li>
+</ol>
+
+<hr>
 <table class="table">
-    <thead style="background-color: #ffe5ea;">
+    <thead class="tablehead">
         <th>Model</th>
         <th>Items</th>
         <th>Action</th>
@@ -18,7 +28,12 @@
                 {% endfor %}
             </td>
             <td>
-                <a class="btn btn-yak" href="{% url 'delete_all' model_str %}">Delete all {{ model_str }}s</a>
+                {% if items|length > 0 %}
+                    <a class="btn btn-yak" href="{% url 'delete_all' model_str %}">Delete all {{ model_str | capfirst }}s</a>
+                {% elif model_str == "data" %}
+                    <a class="btn btn-yak" href="{% url 'data_create' %}">Create initial Data</a><br><br>
+                {% endif %}
+
             </td>
         </tr>
     {% endfor %}

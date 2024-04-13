@@ -1,9 +1,37 @@
 {% extends 'base.html'%}
 {% block content %}
 
-<h3>{{ model_str | capfirst }}s</h3>
+<h1>{{ model.name_plural }}</h1>
+<p>{{ model.description }}</p>
+<hr>
+
 <table class="table">
-    <thead style="background-color: #ffe5ea;">
+    <thead class="tablehead">
+        <th>Name</th>
+        <th>Period</th>
+        <th>Layers</th>
+        <th>Epochs</th>
+        <th>Loss (final improvement)</th>
+        <th>MSE</th>
+        <th>Action</th>
+    </thead>
+    {% for item in items %}
+    <tr>
+        <td>{{ item.name }}</td>
+        <td>{{ item.period }}<br>{{ item.period.file.df.shape }}</td>
+        <td>{{ item.layers }}</td>
+        <td>{{ item.epochs }}</td>
+        <td>{{ item.loss }}</td>
+        <td>{{ item.mse }}</td>
+        <td><a class="btn btn-yak btn-sm" style="margin-top: 0px" href="{% url 'item' model_str item.id %}">View</a></td>
+    </tr>
+    {% endfor %}
+</table>
+<a class="btn btn-yak" href="{% url 'new' model_str %}">Create {{ model_str | capfirst }}</a><br><br>
+
+<h3>Details</h3>
+<table class="table">
+    <thead class="tablehead">
         <th>Name</th>
         <th>Period</th>
         <th>Input Table</th>
@@ -14,14 +42,17 @@
     {% for item in items %}
     <tr>
         <td>
-            <b>{{ item }} </b>
+            <b>{{ item }}</b><br>
+            Layers: {{ item.layers }}<br>
+            Epochs: {{ item.epochs }}<br>
+            {% if item.loss %}Loss: {{ item.loss }}{% endif %}
         </td>
         <td>
             {% if item.period %}
                 <a class="btn btn-yak" href="{% url 'item' 'period' item.period.id %}">{{ item.period }}</a>
             {% endif %}
         </td>
-        <td> {{ item.period.encoded_rate_file.df_top_html | safe }} </td>
+        <td> {{ item.period.rate_file.df_top_html | safe }} </td>
         <td> {{ item.assumption_file.df_top_html | safe }}
              {% for file in item.files %}{% if file %}<a href="{% url 'item' 'file' file.id %}">{{ file }}</a><br>{% endif %}{% endfor %}
         </td>
@@ -33,6 +64,5 @@
     </tr>
     {% endfor %}
 </table>
-<a class="btn btn-yak" href="{% url 'new' model_str %}">Create {{ model_str }}</a><br><br>
 
 {% endblock %}

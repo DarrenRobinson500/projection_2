@@ -44,10 +44,13 @@ model = Sequential([
 ])
 
 model.compile("adam", "binary_crossentropy", metrics=["MeanSquaredError"])
-model.fit(x, y, epochs=500)
+history = model.fit(x, y, epochs=150)
+loss_array = history.history['loss']
+loss = pd.DataFrame(loss_array, columns=['loss', ])
+
 
 prediction = model.predict(x)
 df['prediction'] = prediction
 print(df)
-graph(df)
-
+# graph(df)
+print(loss)

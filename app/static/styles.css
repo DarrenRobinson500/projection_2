@@ -2,9 +2,18 @@
 
 .btn-yak {
     color: black;
-    background-color: #ffc0cb;
-    border-color: #ffc0cb;
-    margin-top: 5px
+    background-color: #DEF7FC;
+    border-color: #DEF7FC;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.tablehead {
+}
+
+h1.page-header {
+    margin: 0;
+    padding: 0;
 }
 
 .table-center td {

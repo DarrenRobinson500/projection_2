@@ -3,22 +3,44 @@
 
 <h3>{{ model_str | capfirst }}: {{ item.name }}</h3>
 <a href="{% url 'list' model_str %}">All {{ model_str }}s</a><br>
-Model: {{ item.model }}<br>Epochs: {{ item.epochs }}<br>
+
+{% for dnn in dnns %}
+    <a class="btn btn-yak" href="{% url 'item' model_str dnn.id %}">View: {{ dnn | capfirst }}</a>
+{% endfor %}<br>
+
+Model: {{ item.model }}<br>
+Layers: {{ item.layers }}<br>
+Epochs: {{ item.epochs }}<br>
+{% if item.loss %}Loss: {{ item.loss }}{% endif %}<br>
+
+<a class="btn btn-yak" href="{% url 'item' 'period' item.period.id %}">Period</a>
+<a class="btn btn-yak" href="{% url 'edit' model_str item.id %}">Edit {{ model_str | capfirst }}</a>
 <a class="btn btn-yak" href="{% url 'run' model_str item.id %}">Run {{ model_str | capfirst}}</a>
 {% if item.model %}
     <a class="btn btn-yak" href="{% url 'create_table' model_str item.id %}">Create assumption table</a>
-{% endif %}
-<a class="btn btn-yak" href="{% url 'edit' model_str item.id %}">Edit {{ model_str | capfirst }}</a><br><br>
+{% endif %}<br><br>
+
+<div class="row">
+    <div class="col-sm-6">
+        {% if item.plot %}
+            {{ item.plot | safe }}
+        {% endif %}
+    </div>
+    <div class="col-sm-6">
+        {% if item.plot_loss %}
+            {{ item.plot_loss | safe }}
+        {% endif %}
+    </div>
+    {% for file in item.files %}{% if file %}<a href="{% url 'item' 'file' file.id %}">{{ file }}</a><br>{% endif %}{% endfor %}<br>
+</div>
 
 <div class="row">
     <div class="col-sm-6">
         <h3>Actual Experience</h3>
-        {{ item.plot_in | safe }}
         {{ item.period.rate_file.df_html | safe }}
     </div>
     <div class="col-sm-6">
         <h3>Assumption Table</h3>
-        {{ item.plot_out | safe }}
         {{ item.assumption_file.df_html | safe }}
     </div>
 </div>

@@ -1,9 +1,23 @@
 {% extends 'base.html'%}
 {% block content %}
 <h1>Projection: {{ item.name | capfirst }} </h1>
-<b>Sort by: </b>{% for option in sort_options %}<a href="?sort_by={{ option }}">{{ option }}</a> {% endfor %}<br>
-<b>Filter on adviser: </b>{% for adviser in advisers %}<a href="?filter_on={{ adviser }}">{{ adviser }}</a> {% endfor %}
 
+<div class="row">
+    <div class="col-sm-3">
+        <b>Sort by: </b>{% for option in sort_options %}<a href="?sort_by={{ option }}">{{ option }}</a> {% endfor %}<br>
+        <b>Filter on adviser: </b>{% for adviser in advisers %}<a href="?filter_on={{ adviser }}">{{ adviser }}</a> {% endfor %}
+    </div>
+        {% for heading, values in menu_data %}
+            <div class="col-sm-3">
+            <h4>{{ heading }}</h4>
+                <a href="?group_by={{ heading }}">Group</a><br>
+                {% for value in values %}
+                    {{ value }}<br>
+                {% endfor %}
+            </div>
+        {% endfor %}
+</div>
+<h3>Results {{ shape }}</h3>
     {{ df | safe }}
 
 {% endblock %}

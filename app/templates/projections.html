@@ -22,7 +22,9 @@
         </td>
         <td>
             {% for file in item.files %}
-                <a href="{% url 'item' 'file' file.id %}">{{ file }}</a><br>
+                {% if file %}
+                    <a href="{% url 'item' 'file' file.id %}">{{ file }}</a><br>
+                {% endif %}
             {% endfor %}
         </td>
         <td> {{ item.dnn.assumption_file.df_top_html | safe }} </td>

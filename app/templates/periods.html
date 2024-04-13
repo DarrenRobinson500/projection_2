@@ -1,11 +1,12 @@
 {% extends 'base.html'%}
 {% block content %}
-
-<h3>Periods</h3>
+<h1>{{ model.name_plural }}</h1>
+<p>{{ model.description }}</p>
+<hr>
 <table class="table">
-    <thead style="background-color: #ffe5ea;">
+    <thead class="tablehead">
         <th>Name</th>
-        <th>Period</th>
+        <th>Joins</th>
         <th>Ouput</th>
         <th>Actions</th>
     </thead>

@@ -18,14 +18,17 @@ def home(request):
 def list(request, model_str):
     model, form = get_model(model_str)
     items = model.objects.all()
-    types = ['data', 'join', 'period', 'rate', 'assumption', 'projection', 'proj_ind']
-    context = {'items': items, 'model_str': model_str, 'types': types}
+    dnns = DNN.objects.all()
+    models = [Data, Join, Period, DNN]
+    types = ['data', 'join', 'period', 'rate', 'assumption']
+    context = {'items': items, 'model_str': model_str, 'models': models, 'types': types, "dnns": dnns, 'model': model}
     return render(request, model_str + "s.html", context)
 
 def item(request, model_str, id):
     model, form = get_model(model_str)
     item = model.objects.get(id=id)
-    context = {'item': item, 'model_str': model_str,}
+    dnns = DNN.objects.all()
+    context = {'item': item, 'model_str': model_str, "dnns": dnns}
     return render(request, model_str + ".html", context)
 
 def new(request, model_str):
@@ -118,6 +121,23 @@ def data_create_next(request, id):
     data.create_next()
     return redirect("list", "data")
 
+def apply_value(request, model_str, id, dnn_id):
+    model, form = get_model(model_str)
+    item = model.objects.get(id=id)
+    dnn = DNN.objects.get(id=dnn_id)
+    table = dnn.assumption_file.df()
+    item.apply_value(table)
+    return redirect("item", model_str, id)
+
+def apply_values(request, model_str, dnn_id):
+    model, form = get_model(model_str)
+    items = model.objects.all()
+    dnn = DNN.objects.get(id=dnn_id)
+    table = dnn.assumption_file.df()
+    for item in items:
+        item.apply_value(table)
+    return redirect('list', 'data')
+
 def show(request, projection_id, number, force_recalc=False):
     projection = Projection.objects.get(id=projection_id)
     proj_ind = Proj_Ind.objects.filter(projection=projection, number=number).first()
@@ -132,21 +152,38 @@ def show(request, projection_id, number, force_recalc=False):
 def proj_analysis(request, id):
     item = Projection.objects.get(id=id)
     df = item.file_db.df()
-    print(df)
     advisers = df['Adviser'].unique()
 
     sort_by = request.GET.get('sort_by')
     if sort_by: df.sort_values(by=sort_by, inplace=True)
     filter_on = request.GET.get('filter_on')
-    for adviser in advisers: print(type(adviser))
-    print(type(filter_on))
-    print("filter on:", filter_on, advisers, filter_on in advisers)
     if filter_on and filter_on in advisers: df = df[df['Adviser']==filter_on]
+    options = ['Time', 'Age', 'Adviser', ]
+    menu_options = ['Time', 'Age', 'Adviser', ]
+    menu_data = []
+    for option in menu_options:
+        values = df[option].unique()
+        menu_data.append((option, values))
+    group_by = request.GET.get('group_by')
 
-    sort_options = ['Time', 'Age', 'Adviser', ]
+    groupings = menu_options
+    if group_by:
+        groupings.remove(group_by)
+        df = df.groupby(groupings).sum()
+        df = df.drop([group_by, ], axis='columns')
+        # x = df1.drop(['rate', 'cat_continuing', 'cat_exit'], axis='columns')
 
-    df = df.to_html(classes=['table', 'table-striped', 'table-center'], index=False, justify='center', formatters=formatters, render_links=True,)
+    # df_count = df.groupby([group_by,]).sum()
+    # df = df_sum
+    # df['Time'] = df_count['Time']
 
-    context = {'item': item, 'df': df, 'sort_options': sort_options, 'advisers': advisers}
+    print("\nDataframe\n")
+    print(type(df))
+    print(df)
+
+    shape = df.shape
+    df = df.to_html(classes=['table', 'table-striped', 'table-center'], index=True, justify='center', formatters=formatters, render_links=True,)
+
+    context = {'item': item, 'df': df, 'sort_options': options, 'advisers': advisers, 'shape': shape, 'menu_data': menu_data}
     return render(request, "proj_analysis.html", context)
 

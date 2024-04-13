@@ -7,6 +7,11 @@
 Shape: {{ item.file.df.shape }}
 {{ item.file.df_total | safe }}
 <h3>Data</h3>
+
+{% if dnns|length > 0 %}<b>Apply Values from DNN: </b>{% endif %}
+{% for dnn in dnns %}
+    <a class="btn btn-yak" href="{% url 'apply_value' model_str item.id dnn.id %}">'{{ dnn | capfirst }}'</a>
+{% endfor %}<br><br>
 {{ item.file.df_html | safe }}
 
 <br><br><br>

@@ -1,22 +1,24 @@
 {% extends 'base.html'%}
 {% block content %}
-<br><br>
-<h3>{{ model_str | capfirst }}s</h3>
+<h1>{{ model.name_plural }}</h1>
+<p>{{ model.description }}</p>
+<hr>
 {% for type in types %}
-<h3>{{ type | capfirst }}s</h3>
+<h3>{{ type | capfirst }}{% if type != "data" %}s{% endif %}</h3>
     <div class="scrollable-content">
         <table class="table">
-            <thead style="background-color: #ffe5ea;">
-                <th>Name</th>
+            <thead class="tablehead">
+                <th>File name and Options</th>
                 <th>Data</th>
             </thead>
             {% for item in items %}
             {% if item.type == type %}
             <tr>
-                <td><b>{{ item.type | capfirst }}</b><br>{{ item }}<br>
-                    <a class="btn btn-yak" href="{% url 'item' model_str item.id %}">View</a>
+                <td><b>{{ item }}</b><br>
+                    {{ item.df.shape }}<br>
+                    <a class="btn btn-yak" href="{% url 'item' model_str item.id %}">View File</a>
                     {% if item.owner %}
-                    <a class="btn btn-yak" href="{% url 'item' item.type item.owner.id %}">View Owner</a>
+                    <a class="btn btn-yak" href="{% url 'item' item.type item.owner.id %}">View {{ type | capfirst }}</a>
                     {% endif %}
                     <a class="btn btn-yak" href="{% url 'delete' model_str item.id %}">Delete</a>
                 </td>

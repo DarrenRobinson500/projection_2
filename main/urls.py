@@ -19,6 +19,9 @@ urlpatterns = [
 
     path("data_create", data_create, name="data_create"),
     path("data_create_next/<id>", data_create_next, name="data_create_next"),
+    path("apply_value/<model_str>/<id>/<dnn_id>", apply_value, name="apply_value"),
+    path("apply_values/<model_str>/<dnn_id>", apply_values, name="apply_values"),
+
     path("show/<projection_id>/<number>", show, name="show"),
     path("show/<projection_id>/<number>/<force_recalc>", show, name="show"),
     path("proj_analysis/<id>", proj_analysis, name="proj_analysis"),

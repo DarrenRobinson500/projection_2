@@ -14,9 +14,10 @@ class PeriodForm(ModelForm):
 class DNNForm(ModelForm):
     class Meta:
         model = DNN
-        fields = ['name', 'period', 'epochs', ]
+        fields = ['name', 'period', 'epochs', 'layers']
         widgets = {
             'name': TextInput(attrs={'class': 'form-control', }),
+            'layers': TextInput(attrs={'class': 'form-control', }),
             'period': Select(attrs={'class': 'form-control', }),
             'epochs': TextInput(attrs={'class': 'form-control', }),
         }

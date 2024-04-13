@@ -1,6 +1,8 @@
 import os
 import tensorflow as tf
 from keras.layers import IntegerLookup, Normalization, StringLookup, Dense, Dropout, concatenate
+from keras import Sequential
+
 from datetime import datetime, date, timedelta, time
 from dateutil.relativedelta import relativedelta
 import calendar
@@ -95,3 +97,16 @@ def round_to_nearest_multiple(x, base=5):
         return base * round(x / base)
     except:
         return 0
+
+def make_model(input_len, details):
+    layers = []
+    for count, x in enumerate(details):
+        if count == 0:  layer = Dense(x, input_shape=(input_len,), activation='relu')
+        else:           layer = Dense(x, activation='relu')
+        layers.append(layer)
+    layers.append(Dense(1, activation='sigmoid'))
+    return Sequential(layers)
+
+def string_to_array(s):
+    return [int(x) for x in s.split(',')]
+
